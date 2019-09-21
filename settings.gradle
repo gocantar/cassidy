@@ -1,2 +1,0 @@
-include ':app', ':cassidy-network'
-rootProject.name='Cassidy Network'
