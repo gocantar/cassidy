@@ -35,8 +35,16 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    // Kotlin
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
-    implementation("androidx.appcompat:appcompat:1.1.0")
+
+    // Android
     implementation("androidx.core:core-ktx:1.1.0")
+
+    // OkHttp3
+    implementation("com.squareup.okhttp3:okhttp:${Version.okHttp3}")
+
+    // Unit test
     testImplementation("junit:junit:4.12")
 }
