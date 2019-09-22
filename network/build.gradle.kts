@@ -44,6 +44,7 @@ dependencies {
 
     // OkHttp3
     implementation("com.squareup.okhttp3:okhttp:${Version.okHttp3}")
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:${Version.okHttp3}")
 
     // Unit test
     testImplementation("junit:junit:4.12")
