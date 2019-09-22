@@ -1,6 +1,7 @@
-package com.gocantar.cassidy.network.model
+package com.gocantar.cassidy.network.model.response
 
-import com.gocantar.cassidy.network.model.body.ResponseBody
+import com.gocantar.cassidy.network.model.request.NetworkRequest
+import com.gocantar.cassidy.network.model.response.body.ResponseBody
 
 /**
  * @author Gonzalo Cantarero Pérez
