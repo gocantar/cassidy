@@ -36,18 +36,11 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Cassidy
-    implementation(project(":tools"))
-
     // Kotlin
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
 
     // Android
     implementation("androidx.core:core-ktx:1.1.0")
-
-    // OkHttp3
-    implementation("com.squareup.okhttp3:okhttp:${Version.okHttp3}")
-    implementation("com.squareup.okhttp3:okhttp-urlconnection:${Version.okHttp3}")
 
     // Unit test
     testImplementation(kotlin("test"))

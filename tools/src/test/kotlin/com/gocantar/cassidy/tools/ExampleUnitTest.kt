@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network
+package com.gocantar.cassidy.tools
 
 import org.junit.Test
 

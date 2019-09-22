@@ -1,18 +1,18 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
-}
+    plugins {
+        id("com.android.application")
+        kotlin("android")
+        kotlin("android.extensions")
+    }
 
 android {
     compileSdkVersion(29)
     buildToolsVersion = "29.0.0"
 
     defaultConfig {
-        applicationId = "com.gocantar.cassidy.network.example"
+        applicationId = "com.gocantar.cassidy.app"
         minSdkVersion(21)
         targetSdkVersion(29)
         versionCode = 1
@@ -47,10 +47,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.1.0")
 
     // Unit test
-    testImplementation("junit:junit:4.12")
+    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-junit"))
 
     // Android test
     androidTestImplementation("androidx.test:runner:1.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 }
-
