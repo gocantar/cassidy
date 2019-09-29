@@ -10,6 +10,6 @@ import com.gocantar.cassidy.network.models.request.body.RequestBody
 data class NetworkRequest(
     val method: Method,
     var url: String,
-    var headers: Map<String, String>,
+    var headers: Map<String, String> = emptyMap(),
     var body: RequestBody? = null
 )

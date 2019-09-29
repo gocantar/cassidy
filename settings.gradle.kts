@@ -1,4 +1,4 @@
-rootProject.name = "Cassidy Network"
+rootProject.name = "Cassidy"
 
 include(":app")
 include(":network")

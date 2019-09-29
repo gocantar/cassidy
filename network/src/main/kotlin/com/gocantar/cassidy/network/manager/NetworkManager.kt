@@ -17,6 +17,10 @@ import okhttp3.OkHttpClient
 import java.io.IOException
 import javax.net.ssl.SSLException
 
+/**
+ * @author Gonzalo Cantarero Pérez
+ */
+
 class NetworkManager(private val client: OkHttpClient = okHttpClient()) : NetworkExecutor {
 
     override fun execute(request: NetworkRequest): NetworkResult {

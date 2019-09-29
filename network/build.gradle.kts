@@ -47,5 +47,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp-urlconnection:${Version.okHttp3}")
 
     // Unit test
-    testImplementation("junit:junit:4.12")
+    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-junit"))
+    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:${Version.mockitoKotlin}")
 }
