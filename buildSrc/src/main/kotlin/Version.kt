@@ -1,4 +1,6 @@
 object Version {
+    // Andoid
+    const val buildTools = "29.0.2"
     // Gradle
     const val gradleTools = "3.5.0"
     // Kotlin

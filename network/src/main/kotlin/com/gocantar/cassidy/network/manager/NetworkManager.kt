@@ -10,7 +10,7 @@ import com.gocantar.cassidy.network.extensions.okhttp.asNetworkError
 import com.gocantar.cassidy.network.extensions.okhttp.asNetworkResponse
 import com.gocantar.cassidy.network.models.error.NetworkError
 import com.gocantar.cassidy.network.models.request.NetworkRequest
-import com.gocantar.cassidy.tools.funtional.models.Either
+import com.gocantar.cassidy.tools.functional.Either
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
