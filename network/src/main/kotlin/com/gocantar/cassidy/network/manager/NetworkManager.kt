@@ -5,7 +5,7 @@ import com.gocantar.cassidy.network.alias.NetworkResult
 import com.gocantar.cassidy.network.alias.OkHttpRequest
 import com.gocantar.cassidy.network.alias.OkHttpResponse
 import com.gocantar.cassidy.network.extensions.asOkHttpRequest
-import com.gocantar.cassidy.network.extensions.okHttpClient
+import com.gocantar.cassidy.network.extensions.defaultOkHttpClient
 import com.gocantar.cassidy.network.extensions.okhttp.asNetworkError
 import com.gocantar.cassidy.network.extensions.okhttp.asNetworkResponse
 import com.gocantar.cassidy.network.models.error.NetworkError
@@ -21,7 +21,9 @@ import javax.net.ssl.SSLException
  * @author Gonzalo Cantarero Pérez
  */
 
-class NetworkManager(private val client: OkHttpClient = okHttpClient()) : NetworkExecutor {
+class NetworkManager(networkClient: OkHttpClient? = null) : NetworkExecutor {
+
+    private val client: OkHttpClient = networkClient ?: defaultOkHttpClient()
 
     override fun execute(request: NetworkRequest): NetworkResult {
         val clientRequest = request.asOkHttpRequest()
@@ -34,7 +36,6 @@ class NetworkManager(private val client: OkHttpClient = okHttpClient()) : Networ
     }
 
     private fun OkHttpRequest.executeSync(request: NetworkRequest): NetworkResult {
-
         return try {
             val clientResponse = client.newCall(this).execute()
             handleResponse(clientResponse, request)
@@ -63,7 +64,6 @@ class NetworkManager(private val client: OkHttpClient = okHttpClient()) : Networ
     }
 
     private fun handleResponse(response: OkHttpResponse, request: NetworkRequest): NetworkResult {
-
         return when (response.isSuccessful) {
             true -> Either.right(response.asNetworkResponse(request))
             false -> Either.left(response.asNetworkError(request))

@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id("com.android.library")
+    id("de.mannodermaus.android-junit5")
     kotlin("android")
     kotlin("android.extensions")
 }
@@ -31,6 +32,7 @@ android {
     (kotlinOptions as KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
 }
 
 dependencies {
@@ -43,7 +45,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
 
     // Android
-    implementation("androidx.core:core-ktx:1.1.0")
+    implementation("androidx.core:core-ktx:${Version.androidX}")
 
     // OkHttp3
     implementation("com.squareup.okhttp3:okhttp:${Version.okHttp3}")
@@ -51,6 +53,8 @@ dependencies {
 
     // Unit test
     testImplementation(kotlin("test"))
-    testImplementation(kotlin("test-junit"))
-    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:${Version.mockitoKotlin}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Version.jUnit5}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Version.jUnit5}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${Version.jUnit5}")
+    testImplementation("io.mockk:mockk:${Version.mockk}")
 }

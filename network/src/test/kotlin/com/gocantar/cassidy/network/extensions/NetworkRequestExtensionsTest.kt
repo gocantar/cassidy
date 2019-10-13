@@ -5,16 +5,19 @@ import com.gocantar.cassidy.network.models.request.NetworkRequest
 import com.gocantar.cassidy.network.models.request.body.RequestBody
 import com.gocantar.cassidy.network.tools.assertThat
 import okio.Buffer
-import org.junit.Test
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 
 /**
  * @author Gonzalo Cantarero Pérez
  */
 
+@DisplayName("Network Request Extensions Tests")
 class NetworkRequestExtensionsTest {
 
     @Test
-    fun `given GET network request then map to OkHttp format request`() {
+    @DisplayName("Given GET network request then map to GET with OkHttp format")
+    fun givenGetRequest_thenMapToOkHttpFormat() {
 
         val getRequest = NetworkRequest(
             method = Method.GET,
@@ -24,16 +27,17 @@ class NetworkRequestExtensionsTest {
 
         okHttpGetRequest.assertThat {
             val isGet = method == "GET"
-            val urlIsCorrect = url.host == "com.gocantar.cassidy"
+            val isUrlCorrect = url.host == "com.gocantar.cassidy"
             val hasEmptyHeaders = headers.size == 0
             val hasNullBody = body == null
-            isGet && urlIsCorrect && hasEmptyHeaders && hasNullBody
+            isGet && isUrlCorrect && hasEmptyHeaders && hasNullBody
         }
 
     }
 
     @Test
-    fun `given POST network request then map to OkHttp format request`() {
+    @DisplayName("Given POST network request then map to POST with OkHttp format")
+    fun `givenPostRequest_thenMapToOkHttpFormat`() {
 
         val getRequest = NetworkRequest(
             method = Method.POST,
@@ -44,19 +48,20 @@ class NetworkRequestExtensionsTest {
 
         okHttpGetRequest.assertThat {
             val isPost = method == "POST"
-            val urlIsCorrect = url.host == "com.gocantar.cassidy"
+            val isUrlCorrect = url.host == "com.gocantar.cassidy"
             val hasEmptyHeaders = headers.size == 0
-            val isCorrectBody = run {
+            val isBodyCorrect = run {
                 val buffer = Buffer()
                 body?.writeTo(buffer)
                 buffer.readByteString().utf8() == "Cassidy Project"
             }
-            isPost && urlIsCorrect && hasEmptyHeaders && isCorrectBody
+            isPost && isUrlCorrect && hasEmptyHeaders && isBodyCorrect
         }
     }
 
     @Test
-    fun `given PUT network request then map to OkHttp format request`() {
+    @DisplayName("Given PUT network request then map to PUT with OkHttp format")
+    fun givenPutRequest_thenMapToOkHttpFormat() {
 
         val getRequest = NetworkRequest(
             method = Method.PUT,
@@ -68,14 +73,15 @@ class NetworkRequestExtensionsTest {
 
         okHttpGetRequest.assertThat {
             val isPut = method == "PUT"
-            val urlIsCorrect = url.host == "com.gocantar.cassidy"
+            val isUrlCorrect = url.host == "com.gocantar.cassidy"
             val areHeadersCorrect = headers["header"] == "firstHeader"
-            isPut && urlIsCorrect && areHeadersCorrect
+            isPut && isUrlCorrect && areHeadersCorrect
         }
     }
 
     @Test
-    fun `given DELETE network request then map to OkHttp format request`() {
+    @DisplayName("Given DELETE network request then map to DELETE with OkHttp format")
+    fun givenDeleteRequest_thenMapToOkHttpFormat() {
 
         val getRequest = NetworkRequest(
             method = Method.DELETE,
@@ -85,8 +91,8 @@ class NetworkRequestExtensionsTest {
 
         okHttpGetRequest.assertThat {
             val isDelete = method == "DELETE"
-            val urlIsCorrect = url.host == "com.gocantar.cassidy"
-            isDelete && urlIsCorrect
+            val isUrlCorrect = url.host == "com.gocantar.cassidy"
+            isDelete && isUrlCorrect
         }
     }
 }

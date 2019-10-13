@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id("com.android.library")
+    id("de.mannodermaus.android-junit5")
     kotlin("android")
     kotlin("android.extensions")
 }
@@ -40,10 +41,13 @@ dependencies {
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
 
     // Android
-    implementation("androidx.core:core-ktx:1.1.0")
+    implementation("androidx.core:core-ktx:${Version.androidX}")
 
     // Unit test
     testImplementation(kotlin("test"))
-    testImplementation(kotlin("test-junit"))
-    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:${Version.mockitoKotlin}")
+    // (Required) Writing and executing Unit Tests on the JUnit Platform
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Version.jUnit5}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Version.jUnit5}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${Version.jUnit5}")
+    testImplementation("io.mockk:mockk:${Version.mockk}")
 }

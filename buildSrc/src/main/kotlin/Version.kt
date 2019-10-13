@@ -1,12 +1,15 @@
 object Version {
-    // Andoid
+    // Android
     const val buildTools = "29.0.2"
+    const val androidX = "1.1.0"
     // Gradle
     const val gradleTools = "3.5.0"
     // Kotlin
     const val kotlin = "1.3.50"
     // OkHttp
     const val okHttp3 = "4.2.0"
-    // Mockito kotlin
-    const val mockitoKotlin = "2.2.0"
+    // Testing
+    const val jUnit5Plugin = "1.5.2.0"
+    const val jUnit5 = "5.5.2"
+    const val mockk = "1.9.3"
 }

@@ -20,7 +20,7 @@ internal fun OkHttpResponse.asNetworkResponse(request: NetworkRequest): NetworkR
 }
 
 internal fun OkHttpResponse.asNetworkError(request: NetworkRequest): NetworkError {
-    return NetworkError.Response(
+    return NetworkError.ServerResponse(
         code = code,
         response = asNetworkResponse(request)
     )
