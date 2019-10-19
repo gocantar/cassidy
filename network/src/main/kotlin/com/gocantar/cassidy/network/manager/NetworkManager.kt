@@ -47,7 +47,6 @@ class NetworkManager(networkClient: OkHttpClient? = null) : NetworkExecutor {
     }
 
     private fun OkHttpRequest.executeAsync(callback: NetworkCallback, request: NetworkRequest) {
-
         client.newCall(this).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 val networkResult = when (e) {
@@ -58,7 +57,8 @@ class NetworkManager(networkClient: OkHttpClient? = null) : NetworkExecutor {
             }
 
             override fun onResponse(call: Call, response: OkHttpResponse) {
-                callback(handleResponse(response, request))
+                val networkResponse = handleResponse(response, request)
+                callback(networkResponse)
             }
         })
     }
