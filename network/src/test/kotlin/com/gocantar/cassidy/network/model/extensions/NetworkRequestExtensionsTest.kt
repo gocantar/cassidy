@@ -1,8 +1,8 @@
-package com.gocantar.cassidy.network.extensions
+package com.gocantar.cassidy.network.model.extensions
 
 import com.gocantar.cassidy.network.constants.Method
-import com.gocantar.cassidy.network.models.request.NetworkRequest
-import com.gocantar.cassidy.network.models.request.body.RequestBody
+import com.gocantar.cassidy.network.model.request.NetworkRequest
+import com.gocantar.cassidy.network.model.request.body.RequestBody
 import com.gocantar.cassidy.network.tools.assertThat
 import okio.Buffer
 import org.junit.jupiter.api.DisplayName

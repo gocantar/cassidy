@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network.extensions
+package com.gocantar.cassidy.network.model.extensions
 
 import com.gocantar.cassidy.network.manager.NetworkExecutor
 import okhttp3.JavaNetCookieJar

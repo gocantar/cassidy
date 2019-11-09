@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network.extensions.okhttp
+package com.gocantar.cassidy.network.model.extensions.okhttp
 
 import okhttp3.Headers
 

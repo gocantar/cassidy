@@ -1,8 +1,8 @@
 package com.gocantar.cassidy.network.manager
 
-import com.gocantar.cassidy.network.models.error.NetworkError
-import com.gocantar.cassidy.network.models.request.NetworkRequest
-import com.gocantar.cassidy.network.models.response.NetworkResponse
+import com.gocantar.cassidy.network.model.error.NetworkError
+import com.gocantar.cassidy.network.model.request.NetworkRequest
+import com.gocantar.cassidy.network.model.response.NetworkResponse
 import com.gocantar.cassidy.tools.functional.Either
 
 /**

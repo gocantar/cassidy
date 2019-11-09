@@ -1,9 +1,7 @@
-package com.gocantar.cassidy.network.extensions
+package com.gocantar.cassidy.network.model.extensions
 
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkError
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkResponse
-import com.gocantar.cassidy.network.models.error.NetworkError
-import com.gocantar.cassidy.network.models.request.NetworkRequest
+import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
+import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.tools.UnitTest
 import com.gocantar.cassidy.network.tools.assertThat
 import com.gocantar.cassidy.network.tools.mock
@@ -42,7 +40,7 @@ class OkHttpResponseExtensionsTest : UnitTest {
     @DisplayName("Given error OkHttp response then map to network error response")
     fun givenErrorOkHttpResponse_thenMapToNetworkErrorResponse() {
         mockOkHttpResponse(400, mapOf(), "Cassidy Project Error")
-        val networkError = okHttpResponse.asNetworkError(networkRequest) as NetworkError.FailedResponse
+        val networkError = okHttpResponse.asNetworkResponse(networkRequest).asError()
         networkError.assertThat {
             val isError = code == 400
             val isBodyCorrect = response?.body?.bytes?.contentEquals("Cassidy Project Error".toByteArray(Charsets.UTF_8))

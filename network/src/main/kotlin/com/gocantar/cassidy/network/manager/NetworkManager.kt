@@ -4,12 +4,14 @@ import com.gocantar.cassidy.network.alias.NetworkCallback
 import com.gocantar.cassidy.network.alias.NetworkResult
 import com.gocantar.cassidy.network.alias.OkHttpRequest
 import com.gocantar.cassidy.network.alias.OkHttpResponse
-import com.gocantar.cassidy.network.extensions.asOkHttpRequest
-import com.gocantar.cassidy.network.extensions.defaultOkHttpClient
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkError
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkResponse
-import com.gocantar.cassidy.network.models.error.NetworkError
-import com.gocantar.cassidy.network.models.request.NetworkRequest
+import com.gocantar.cassidy.network.interceptor.Interceptor
+import com.gocantar.cassidy.network.interceptor.InterceptorExecutor
+import com.gocantar.cassidy.network.interceptor.extensions.process
+import com.gocantar.cassidy.network.model.error.NetworkError
+import com.gocantar.cassidy.network.model.extensions.asOkHttpRequest
+import com.gocantar.cassidy.network.model.extensions.defaultOkHttpClient
+import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
+import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.tools.functional.Either
 import okhttp3.Call
 import okhttp3.Callback
@@ -21,18 +23,23 @@ import javax.net.ssl.SSLException
  * @author Gonzalo Cantarero Pérez
  */
 
-class NetworkManager(networkClient: OkHttpClient? = null) : NetworkExecutor {
+class NetworkManager(networkClient: OkHttpClient? = null)
+    : NetworkExecutor, InterceptorExecutor {
 
     private val client: OkHttpClient = networkClient ?: defaultOkHttpClient()
 
+    override val interceptors: MutableList<Interceptor> = mutableListOf()
+
     override fun execute(request: NetworkRequest): NetworkResult {
-        val clientRequest = request.asOkHttpRequest()
-        return clientRequest.executeSync(request)
+        val networkRequest = interceptors.process(request = request)
+        val clientRequest = networkRequest.asOkHttpRequest()
+        return clientRequest.executeSync(networkRequest)
     }
 
     override fun enqueue(request: NetworkRequest, callback: NetworkCallback) {
-        val clientRequest = request.asOkHttpRequest()
-        clientRequest.executeAsync(callback, request)
+        val networkRequest = interceptors.process(request = request)
+        val clientRequest = networkRequest.asOkHttpRequest()
+        clientRequest.executeAsync(callback, networkRequest)
     }
 
     private fun OkHttpRequest.executeSync(request: NetworkRequest): NetworkResult {
@@ -64,9 +71,14 @@ class NetworkManager(networkClient: OkHttpClient? = null) : NetworkExecutor {
     }
 
     private fun handleResponse(response: OkHttpResponse, request: NetworkRequest): NetworkResult {
+        val networkResponse = interceptors.process(response = response.asNetworkResponse(request))
         return when (response.isSuccessful) {
-            true -> Either.right(response.asNetworkResponse(request))
-            false -> Either.left(response.asNetworkError(request))
+            true -> Either.right(networkResponse)
+            false -> Either.left(networkResponse.asError())
         }
+    }
+
+    override fun addInterceptor(interceptor: Interceptor) {
+        interceptors.add(interceptor)
     }
 }

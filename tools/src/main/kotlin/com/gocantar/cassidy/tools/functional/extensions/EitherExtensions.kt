@@ -8,7 +8,6 @@ import com.gocantar.cassidy.tools.functional.EitherProcessorBuilder
  */
 
 inline fun <L, R> fold(either: Either<L, R>, block: EitherProcessorBuilder<L, R>.() -> Unit) {
-
     EitherProcessorBuilder<L, R>().apply {
         this.either = either
         block()

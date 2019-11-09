@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network.models.response.body
+package com.gocantar.cassidy.network.model.response.body
 
 import com.gocantar.cassidy.network.alias.OkHttpResponseBody
 

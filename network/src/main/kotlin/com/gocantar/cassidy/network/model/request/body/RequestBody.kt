@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network.models.request.body
+package com.gocantar.cassidy.network.model.request.body
 
 /**
  * @author Gonzalo Cantarero Pérez

@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.network.extensions
+package com.gocantar.cassidy.network.model.extensions
 
 import okhttp3.Headers.Companion.toHeaders
 import okhttp3.Headers
@@ -7,6 +7,6 @@ import okhttp3.Headers
  * @author Gonzalo Cantarero Pérez
  */
 
-fun Map<String, String>.okHttpHeaders(): Headers {
+internal fun Map<String, String>.okHttpHeaders(): Headers {
     return toHeaders()
 }

@@ -1,12 +1,11 @@
 package com.gocantar.cassidy.network.manager
 
 import com.gocantar.cassidy.network.alias.NetworkCallback
-import com.gocantar.cassidy.network.extensions.asOkHttpRequest
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkError
-import com.gocantar.cassidy.network.extensions.okhttp.asNetworkResponse
-import com.gocantar.cassidy.network.models.error.NetworkError
-import com.gocantar.cassidy.network.models.request.NetworkRequest
-import com.gocantar.cassidy.network.models.response.NetworkResponse
+import com.gocantar.cassidy.network.model.extensions.asOkHttpRequest
+import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
+import com.gocantar.cassidy.network.model.error.NetworkError
+import com.gocantar.cassidy.network.model.request.NetworkRequest
+import com.gocantar.cassidy.network.model.response.NetworkResponse
 import com.gocantar.cassidy.network.tools.UnitTest
 import com.gocantar.cassidy.network.tools.assertThat
 import com.gocantar.cassidy.network.tools.mock
@@ -71,7 +70,7 @@ class NetworkManagerTest : UnitTest {
         }
 
         @Test
-        @DisplayName("When SSL exception is throws then return SSL error")
+        @DisplayName("When SSL exception is thrown then return SSL error")
         fun givenNetworkRequest_whenSSLExceptionIsThrows_thenReturnErrorNetworkResult() {
             val exception: SSLException = mock()
             mockThrowException(exception)
@@ -80,7 +79,7 @@ class NetworkManagerTest : UnitTest {
         }
 
         @Test
-        @DisplayName("When IO exception is throws then return connection error")
+        @DisplayName("When IO exception is thrown then return connection error")
         fun givenNetworkRequest_whenConnectionExceptionIsThrows_thenReturnErrorNetworkResult() {
             val exception: IOException = mock()
             mockThrowException(exception)
@@ -122,7 +121,7 @@ class NetworkManagerTest : UnitTest {
         }
 
         @Test
-        @DisplayName("When SSL exception is throws then invoke callback with SSL error")
+        @DisplayName("When SSL exception is thrown then invoke callback with SSL error")
         fun givenNetworkRequest_whenSSLExceptionIsThrows_thenInvokeCallBackWithErrorNetworkResult() {
             val exception: SSLException = mock()
             mockAsyncResponseFailure(exception)
@@ -131,7 +130,7 @@ class NetworkManagerTest : UnitTest {
         }
 
         @Test
-        @DisplayName("When IO exception is throws then invoke callback with connection error")
+        @DisplayName("When IO exception is thrown then invoke callback with connection error")
         fun givenNetworkRequest_whenConnectionExceptionIsThrows_thenInvokeCallBackWithErrorNetworkResult() {
             val exception: IOException = mock()
             mockAsyncResponseFailure(exception)
@@ -162,11 +161,11 @@ class NetworkManagerTest : UnitTest {
         every { client.newCall(any()) } returns call
         every { networkRequest.asOkHttpRequest() } returns okHttpRequest
         every { okHttpResponse.asNetworkResponse(networkRequest) } returns networkResponse
-        every { okHttpResponse.asNetworkError(networkRequest) } returns networkError
+        every { networkResponse.asError() } returns networkError
     }
 
     private fun mockExtensions() {
-        mockkStatic("com.gocantar.cassidy.network.extensions.NetworkRequestExtensionsKt")
-        mockkStatic("com.gocantar.cassidy.network.extensions.okhttp.OkHttpResponseExtensionsKt")
+        mockkStatic("com.gocantar.cassidy.network.model.extensions.NetworkRequestExtensionsKt")
+        mockkStatic("com.gocantar.cassidy.network.model.extensions.okhttp.OkHttpResponseExtensionsKt")
     }
 }
