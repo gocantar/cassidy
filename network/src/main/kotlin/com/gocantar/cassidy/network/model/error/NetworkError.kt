@@ -8,13 +8,12 @@ import com.gocantar.cassidy.network.model.response.NetworkResponse
  */
 
 sealed class NetworkError {
-
     data class FailedResponse(
         val code: Int = -1,
         val response: NetworkResponse? = null
     ) : NetworkError()
 
-    data class Connection(val request: NetworkRequest): NetworkError()
+    data class Connection(val request: NetworkRequest) : NetworkError()
 
-    data class SSLConnection(val request: NetworkRequest): NetworkError()
+    data class SSLConnection(val request: NetworkRequest) : NetworkError()
 }
