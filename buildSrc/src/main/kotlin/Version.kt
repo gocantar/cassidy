@@ -6,6 +6,7 @@ object Version {
     const val gradleTools = "3.5.0"
     // Kotlin
     const val kotlin = "1.3.50"
+    const val coroutines = "1.3.2"
     // OkHttp
     const val okHttp3 = "4.2.0"
     // Testing
