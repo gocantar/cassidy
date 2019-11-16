@@ -6,7 +6,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
@@ -27,7 +26,7 @@ abstract class UseCase<Params, L, R>(
         return withContext(dispatcher) { runTask(params, delay) }
     }
 
-    internal abstract fun backgroundTask(params: Params?): Either<L,R>
+    internal abstract fun backgroundTask(params: Params?): Either<L, R>
 
     private suspend fun runTask(params: Params?, delay: Long): Either<L, R> {
         delay(delay)

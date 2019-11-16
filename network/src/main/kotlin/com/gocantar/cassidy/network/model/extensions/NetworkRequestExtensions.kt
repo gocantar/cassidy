@@ -2,7 +2,6 @@ package com.gocantar.cassidy.network.model.extensions
 
 import com.gocantar.cassidy.network.alias.OkHttpRequest
 import com.gocantar.cassidy.network.alias.OkHttpRequestBody
-import com.gocantar.cassidy.network.interceptor.Interceptor
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.request.body.RequestBody
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

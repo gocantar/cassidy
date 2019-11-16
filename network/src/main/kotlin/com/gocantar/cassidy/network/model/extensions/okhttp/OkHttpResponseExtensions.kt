@@ -1,7 +1,6 @@
 package com.gocantar.cassidy.network.model.extensions.okhttp
 
 import com.gocantar.cassidy.network.alias.OkHttpResponse
-import com.gocantar.cassidy.network.model.error.NetworkError
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.response.NetworkResponse
 import com.gocantar.cassidy.network.model.response.body.ResponseBody

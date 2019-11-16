@@ -8,6 +8,6 @@ import com.gocantar.cassidy.network.model.response.NetworkResponse
  */
 
 interface Interceptor {
-    fun onRequest(request: NetworkRequest) : NetworkRequest
-    fun onResponse(response: NetworkResponse) : NetworkResponse
+    fun onRequest(request: NetworkRequest): NetworkRequest
+    fun onResponse(response: NetworkResponse): NetworkResponse
 }

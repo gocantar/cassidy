@@ -14,7 +14,7 @@ data class NetworkResponse(
     val body: Body,
     val request: NetworkRequest
 ) {
-    fun asError() : NetworkError.FailedResponse {
+    fun asError(): NetworkError.FailedResponse {
         return NetworkError.FailedResponse(code, this)
     }
 }

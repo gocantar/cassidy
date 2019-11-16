@@ -43,8 +43,9 @@ class OkHttpResponseExtensionsTest : UnitTest {
         val networkError = okHttpResponse.asNetworkResponse(networkRequest).asError()
         networkError.assertThat {
             val isError = code == 400
-            val isBodyCorrect = response?.body?.bytes?.contentEquals("Cassidy Project Error".toByteArray(Charsets.UTF_8))
-                ?: false
+            val isBodyCorrect =
+                response?.body?.bytes?.contentEquals("Cassidy Project Error".toByteArray(Charsets.UTF_8))
+                    ?: false
             val isRequestCorrect = response?.request == networkRequest
             isError && isBodyCorrect && isRequestCorrect
         }
