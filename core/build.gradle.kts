@@ -55,4 +55,5 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Version.jUnit5}")
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Version.jUnit5}")
     testImplementation("io.mockk:mockk:${Version.mockk}")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutines}")
 }
