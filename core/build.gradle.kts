@@ -57,3 +57,5 @@ dependencies {
     testImplementation("io.mockk:mockk:${Version.mockk}")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutines}")
 }
+
+apply(from = "../buildSrc/publish-local.gradle")

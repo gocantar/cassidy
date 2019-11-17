@@ -51,3 +51,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Version.jUnit5}")
     testImplementation("io.mockk:mockk:${Version.mockk}")
 }
+
+apply(from = "../buildSrc/publish-local.gradle")
