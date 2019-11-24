@@ -1,6 +1,5 @@
 package com.gocantar.cassidy.core.domain.usecase
 
-import com.gocantar.cassidy.tools.functional.Either
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -13,22 +12,22 @@ import kotlinx.coroutines.withContext
  * @author Gonzalo Cantarero Pérez
  */
 
-abstract class UseCase<Params, L, R>(
+abstract class UseCase<Params, Result>(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val scope: CoroutineScope = CoroutineScope(dispatcher)
-) : Interactor<Params, L, R> {
+) : Interactor<Params, Result> {
 
-    override suspend fun executeAsync(params: Params?, delay: Long): Deferred<Either<L, R>> {
+    override suspend fun executeAsync(params: Params?, delay: Long): Deferred<Result> {
         return scope.async { runTask(params, delay) }
     }
 
-    override suspend fun execute(params: Params?, delay: Long): Either<L, R> {
+    override suspend fun execute(params: Params?, delay: Long): Result {
         return withContext(dispatcher) { runTask(params, delay) }
     }
 
-    internal abstract fun backgroundTask(params: Params?): Either<L, R>
+    internal abstract fun backgroundTask(params: Params?): Result
 
-    private suspend fun runTask(params: Params?, delay: Long): Either<L, R> {
+    private suspend fun runTask(params: Params?, delay: Long): Result {
         delay(delay)
         return backgroundTask(params)
     }

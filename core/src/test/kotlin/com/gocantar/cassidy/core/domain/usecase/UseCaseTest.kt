@@ -1,6 +1,5 @@
 package com.gocantar.cassidy.core.domain.usecase
 
-import com.gocantar.cassidy.tools.functional.Either
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
@@ -32,57 +31,62 @@ class UseCaseTest {
 
     @BeforeEach
     fun setUp() {
-        every { useCase.backgroundTask(null) } returns Either.left("left")
-        every { useCase.backgroundTask("params") } returns Either.right("right")
+        every { useCase.backgroundTask(null) } returns "null-params"
+        every { useCase.backgroundTask("params") } returns "non-null-params"
     }
 
     @Test
     @DisplayName("Execute sync with null params as default value")
-    fun givenSyncExecution_whenThereAreNotParamsGiven_thenExecuteSyncTaskWithNullAsDefaultValue() = dispatcher.runBlockingTest {
-        val result = useCase.execute()
-        verify { useCase.backgroundTask(null) }
-        assertEquals("left", result.left)
-    }
+    fun givenSyncExecution_whenThereAreNotParamsGiven_thenExecuteSyncTaskWithNullAsDefaultValue() =
+        dispatcher.runBlockingTest {
+            val result = useCase.execute()
+            verify { useCase.backgroundTask(null) }
+            assertEquals("null-params", result)
+        }
 
     @Test
     @DisplayName("Execute sync with given params as value")
-    fun givenSyncExecution_whenParamsAreGiven_thenExecuteSyncTaskWithParams() = dispatcher.runBlockingTest {
-        val result = useCase.execute("params")
-        verify { useCase.backgroundTask("params") }
-        assertEquals("right", result.right)
-    }
+    fun givenSyncExecution_whenParamsAreGiven_thenExecuteSyncTaskWithParams() =
+        dispatcher.runBlockingTest {
+            val result = useCase.execute("params")
+            verify { useCase.backgroundTask("params") }
+            assertEquals("non-null-params", result)
+        }
 
     @Test
     @DisplayName("Execute async with null params as default value")
-    fun givenAsyncExecution_whenThereAreNotParamsGiven_thenExecuteSyncTaskWithNullAsDefaultValue() = dispatcher.runBlockingTest {
-        val result = useCase.executeAsync()
-        verify { useCase.backgroundTask(null) }
-        assertEquals("left", result.await().left)
-    }
+    fun givenAsyncExecution_whenThereAreNotParamsGiven_thenExecuteSyncTaskWithNullAsDefaultValue() =
+        dispatcher.runBlockingTest {
+            val result = useCase.executeAsync()
+            verify { useCase.backgroundTask(null) }
+            assertEquals("null-params", result.await())
+        }
 
     @Test
     @DisplayName("Execute async with given params as value")
-    fun givenAsyncExecution_whenParamsAreGiven_thenExecuteSyncTaskWithParams() = dispatcher.runBlockingTest {
-        val result = useCase.executeAsync("params")
-        verify { useCase.backgroundTask("params") }
-        assertEquals("right", result.await().right)
-    }
+    fun givenAsyncExecution_whenParamsAreGiven_thenExecuteSyncTaskWithParams() =
+        dispatcher.runBlockingTest {
+            val result = useCase.executeAsync("params")
+            verify { useCase.backgroundTask("params") }
+            assertEquals("non-null-params", result.await())
+        }
 
     @Test
     @DisplayName("Execute async with given params as value")
-    fun givenAsyncExecution_whenIsExecuteAsyncWithDelay_thenExecuteTaskAfterDelay() = dispatcher.runBlockingTest {
-        val result = useCase.executeAsync("params", 1_000)
-        advanceTimeBy(990)
-        verify(exactly = 0) { useCase.backgroundTask("params") }
-        advanceTimeBy(10)
-        verify(exactly = 1) { useCase.backgroundTask("params") }
-        assertEquals("right", result.await().right)
-    }
+    fun givenAsyncExecution_whenIsExecuteAsyncWithDelay_thenExecuteTaskAfterDelay() =
+        dispatcher.runBlockingTest {
+            val result = useCase.executeAsync("params", 1_000)
+            advanceTimeBy(990)
+            verify(exactly = 0) { useCase.backgroundTask("params") }
+            advanceTimeBy(10)
+            verify(exactly = 1) { useCase.backgroundTask("params") }
+            assertEquals("non-null-params", result.await())
+        }
 
-    inner class MockedUseCase : UseCase<String?, String, String>(
+    inner class MockedUseCase : UseCase<String?, String>(
         coroutinesTestRule.dispatcher,
         coroutinesTestRule.scope
     ) {
-        override fun backgroundTask(params: String?): Either<String, String> = mockk()
+        override fun backgroundTask(params: String?): String = mockk()
     }
 }
