@@ -50,12 +50,11 @@ dependencies {
     implementation("androidx.core:core-ktx:${Versions.androidX}")
 
     // Unit test
-    testImplementation(kotlin("test"))
+    testImplementation(project(":test"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
-    testImplementation("io.mockk:mockk:${Versions.mockk}")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}")
+
 }
 
 apply(from = "../buildSrc/publish-local.gradle")

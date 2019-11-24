@@ -2,9 +2,9 @@ package com.gocantar.cassidy.network.model.extensions
 
 import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
 import com.gocantar.cassidy.network.model.request.NetworkRequest
-import com.gocantar.cassidy.network.tools.UnitTest
-import com.gocantar.cassidy.network.tools.assertThat
-import com.gocantar.cassidy.network.tools.mock
+import com.gocantar.cassidy.test.base.UnitTest
+import com.gocantar.cassidy.test.base.mock
+import com.gocantar.cassidy.test.extensions.assertThat
 import io.mockk.every
 import okhttp3.Response
 import okhttp3.ResponseBody

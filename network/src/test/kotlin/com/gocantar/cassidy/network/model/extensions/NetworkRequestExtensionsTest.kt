@@ -3,7 +3,7 @@ package com.gocantar.cassidy.network.model.extensions
 import com.gocantar.cassidy.network.constants.Method
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.request.body.RequestBody
-import com.gocantar.cassidy.network.tools.assertThat
+import com.gocantar.cassidy.test.extensions.assertThat
 import okio.Buffer
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

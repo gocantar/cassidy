@@ -38,24 +38,18 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Cassidy
-    implementation(project(":tools"))
-
     // Kotlin
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
+    api(kotlin("test"))
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}")
 
-    // Android
-    implementation("androidx.core:core-ktx:${Versions.androidX}")
+    // Mocking
+    api("io.mockk:mockk:${Versions.mockk}")
 
-    // OkHttp3
-    implementation("com.squareup.okhttp3:okhttp:${Versions.okHttp3}")
-    implementation("com.squareup.okhttp3:okhttp-urlconnection:${Versions.okHttp3}")
-
-    // Unit test
-    testImplementation(project(":test"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
+    // JUnit5
+    implementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
+    implementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
 }
 
 apply(from = "../buildSrc/publish-local.gradle")

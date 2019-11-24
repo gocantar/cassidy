@@ -1,6 +1,7 @@
 rootProject.name = "Cassidy"
 
 include(":app")
-include(":network")
-include(":tools")
 include(":core")
+include(":tools")
+include(":network")
+include(":test")

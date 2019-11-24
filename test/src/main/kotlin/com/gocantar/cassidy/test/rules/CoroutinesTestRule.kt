@@ -1,4 +1,4 @@
-package com.gocantar.cassidy.core.domain.usecase
+package com.gocantar.cassidy.test.rules
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
