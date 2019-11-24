@@ -9,7 +9,7 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion = Version.buildTools
+    buildToolsVersion = Versions.buildTools
 
     defaultConfig {
         applicationId = "com.gocantar.cassidy.app"

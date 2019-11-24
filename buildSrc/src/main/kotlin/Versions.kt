@@ -1,4 +1,4 @@
-object Version {
+object Versions {
     // Android
     const val buildTools = "29.0.2"
     const val androidX = "1.1.0"

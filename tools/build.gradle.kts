@@ -10,7 +10,7 @@ plugins {
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion =  Version.buildTools
+    buildToolsVersion =  Versions.buildTools
 
     defaultConfig {
         minSdkVersion(21)
@@ -41,15 +41,15 @@ dependencies {
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
 
     // Android
-    implementation("androidx.core:core-ktx:${Version.androidX}")
+    implementation("androidx.core:core-ktx:${Versions.androidX}")
 
     // Unit test
     testImplementation(kotlin("test"))
     // (Required) Writing and executing Unit Tests on the JUnit Platform
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${Version.jUnit5}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Version.jUnit5}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${Version.jUnit5}")
-    testImplementation("io.mockk:mockk:${Version.mockk}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
+    testImplementation("io.mockk:mockk:${Versions.mockk}")
 }
 
 apply(from = "../buildSrc/publish-local.gradle")
