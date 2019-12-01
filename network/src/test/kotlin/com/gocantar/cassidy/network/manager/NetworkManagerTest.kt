@@ -1,9 +1,9 @@
 package com.gocantar.cassidy.network.manager
 
 import com.gocantar.cassidy.network.alias.NetworkCallback
+import com.gocantar.cassidy.network.model.error.NetworkError
 import com.gocantar.cassidy.network.model.extensions.asOkHttpRequest
 import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
-import com.gocantar.cassidy.network.model.error.NetworkError
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.response.NetworkResponse
 import com.gocantar.cassidy.test.base.UnitTest

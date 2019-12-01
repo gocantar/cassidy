@@ -10,7 +10,7 @@ plugins {
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion =  Versions.buildTools
+    buildToolsVersion = Versions.buildTools
 
     defaultConfig {
         minSdkVersion(21)
@@ -32,7 +32,6 @@ android {
     (kotlinOptions as KotlinJvmOptions).apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
 }
 
 dependencies {
@@ -44,7 +43,7 @@ dependencies {
     // Kotlin
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}")
 
     // Android
     implementation("androidx.core:core-ktx:${Versions.androidX}")
@@ -54,7 +53,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
-
 }
-
 apply(from = "../buildSrc/publish-local.gradle")
