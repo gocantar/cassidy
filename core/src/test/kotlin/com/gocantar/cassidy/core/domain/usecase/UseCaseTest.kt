@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test
  */
 
 @ExperimentalCoroutinesApi
-@DisplayName("Use Case´s Tests")
+@DisplayName("Use Case´s")
 class UseCaseTest : ViewModelUnitTest() {
 
     private val useCase: MockedUseCase = spyk(MockedUseCase())
