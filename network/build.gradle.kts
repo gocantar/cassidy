@@ -22,7 +22,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -47,8 +50,8 @@ dependencies {
     implementation("androidx.core:core-ktx:${Versions.androidX}")
 
     // OkHttp3
-    implementation("com.squareup.okhttp3:okhttp:${Versions.okHttp3}")
-    implementation("com.squareup.okhttp3:okhttp-urlconnection:${Versions.okHttp3}")
+    implementation(group = "com.squareup", name = "okhttp-4.2.2", ext = "jar")
+    implementation(group = "com.squareup", name = "okhttp-urlconnection-4.2.2", ext = "jar")
 
     // Unit test
     testImplementation(project(":test"))

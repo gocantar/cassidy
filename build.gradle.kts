@@ -14,6 +14,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        flatDir { dir("src/main/libs") }
     }
     apply(from = "$rootDir/buildSrc/test-logging.gradle.kts")
 }
