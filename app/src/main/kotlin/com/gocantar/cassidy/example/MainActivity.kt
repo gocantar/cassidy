@@ -8,11 +8,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var count = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         roundImage.setOnClickListener {
-            Toast.makeText(baseContext, "on click", Toast.LENGTH_LONG).show()
+            count ++
+            Toast.makeText(baseContext, "on click: $count times", Toast.LENGTH_LONG).show()
         }
     }
 }

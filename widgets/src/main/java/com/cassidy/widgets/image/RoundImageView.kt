@@ -30,7 +30,7 @@ import kotlin.math.sqrt
  * @author Gonzalo Cantarero Pérez
  */
 
-class RoundImageView @JvmOverloads constructor(
+open class RoundImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ImageView(context, attrs, defStyleAttr) {
 
@@ -98,28 +98,43 @@ class RoundImageView @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val isProcessed = when(event.action) {
+        val isProcessed = when (event.action) {
             MotionEvent.ACTION_DOWN -> event.handleDown()
-            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> event.handleUp()
+            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
+                if(event.isInCircle()) performClick()
+                event.handleUp()
+            }
             else -> false
         }
         return super.onTouchEvent(event) || isProcessed
     }
 
-    private fun drawHighlight(canvas: Canvas) {
+    override fun performClick(): Boolean {
+        return if (isTapped.not()) super.performClick() else true
+    }
+
+    protected fun drawHighlight(canvas: Canvas) {
         if (isHighLightEnable && isTapped) {
             canvas.drawOval(bitmapBounds, tappedPaint)
         }
     }
 
-    private fun drawStroke(canvas: Canvas) {
+    protected fun drawStroke(canvas: Canvas) {
         if (strokePaint.strokeWidth > 0F) {
             canvas.drawOval(strokeBounds, strokePaint)
         }
     }
 
-    private fun drawBitmap(canvas: Canvas) {
+    protected fun drawBitmap(canvas: Canvas) {
         canvas.drawOval(bitmapBounds, bitmapPaint)
+    }
+
+    protected fun updateBitmapBounds() {
+        val contentWidth = width - paddingLeft - paddingRight
+        val contentHeight = height - paddingLeft - paddingRight
+        val diameter = min(contentWidth, contentHeight)
+        val (left, top) = getCircleBoundsOrigin(contentWidth, contentHeight)
+        bitmapBounds.set(left, top, left + diameter, top + diameter)
     }
 
     private fun initializeAttributes(attributes: AttributeSet, defStyleAttr: Int) {
@@ -171,13 +186,6 @@ class RoundImageView @JvmOverloads constructor(
         outlineProvider = RoundImageViewOutlineProvider(strokeBounds)
     }
 
-    private fun updateBitmapBounds() {
-        val contentWidth = width - paddingLeft - paddingRight
-        val contentHeight = height - paddingLeft - paddingRight
-        val diameter = min(contentWidth, contentHeight)
-        val (left, top) = getCircleBoundsOrigin(contentWidth, contentHeight)
-        bitmapBounds.set(left, top, left + diameter, top + diameter)
-    }
 
     private fun getCircleBoundsOrigin(width: Int, height: Int): Pair<Float, Float> {
         var left = paddingLeft.toFloat()
@@ -220,7 +228,7 @@ class RoundImageView @JvmOverloads constructor(
     }
 
     private fun MotionEvent.handleDown(): Boolean {
-        if(isInCircle().not()) return false
+        if (isInCircle().not()) return false
         isTapped = true
         invalidate()
         return true
@@ -246,6 +254,7 @@ class RoundImageView @JvmOverloads constructor(
             rect.right.toInt(),
             rect.bottom.toInt()
         )
+
         override fun getOutline(view: View?, outline: Outline) {
             outline.setOval(mRect)
         }
