@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
-    import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-    plugins {
-        id("com.android.application")
-        kotlin("android")
-        kotlin("android.extensions")
-    }
+plugins {
+    id("com.android.application")
+    kotlin("android")
+    kotlin("android.extensions")
+}
 
 android {
     compileSdkVersion(29)
@@ -38,6 +38,8 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(project(":widgets"))
 
     // Kotlin
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))

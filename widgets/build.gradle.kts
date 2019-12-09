@@ -44,6 +44,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
 
     // Android
+    implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:${Versions.androidX}")
 
     // Unit test
