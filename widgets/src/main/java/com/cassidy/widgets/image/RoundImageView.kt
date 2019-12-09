@@ -1,5 +1,6 @@
 package com.cassidy.widgets.image
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
@@ -97,20 +98,14 @@ open class RoundImageView @JvmOverloads constructor(
         drawHighlight(canvas)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val isProcessed = when (event.action) {
+        super.onTouchEvent(event)
+        return when (event.action) {
             MotionEvent.ACTION_DOWN -> event.handleDown()
-            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
-                if(event.isInCircle()) performClick()
-                event.handleUp()
-            }
+            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> event.handleUp()
             else -> false
         }
-        return super.onTouchEvent(event) || isProcessed
-    }
-
-    override fun performClick(): Boolean {
-        return if (isTapped.not()) super.performClick() else true
     }
 
     protected fun drawHighlight(canvas: Canvas) {
