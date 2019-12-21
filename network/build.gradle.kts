@@ -5,7 +5,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
-    id("junit-5")
+    id("android-junit5")
 }
 
 android {
