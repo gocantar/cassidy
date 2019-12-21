@@ -3,14 +3,14 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id("com.android.library")
-    id("de.mannodermaus.android-junit5")
     kotlin("android")
     kotlin("android.extensions")
+    id("junit-5")
 }
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion = Versions.buildTools
+    buildToolsVersion = Android.Versions.buildTools
 
     defaultConfig {
         minSdkVersion(21)
@@ -43,21 +43,14 @@ dependencies {
     // Cassidy
     implementation(project(":tools"))
 
-    // Kotlin
-    implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
 
-    // Android
-    implementation("androidx.core:core-ktx:${Versions.androidX}")
-
-    // OkHttp3
     implementation(group = "com.squareup", name = "okhttp-4.2.2", ext = "jar")
     implementation(group = "com.squareup", name = "okhttp-urlconnection-4.2.2", ext = "jar")
 
-    // Unit test
     testImplementation(project(":test"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
-}
 
-apply(from = "../buildSrc/publish-local.gradle")
+    testImplementation( group =  "com.squareup.okio", name = "okio", version = "2.4.2")
+
+}
+apply(from = "../buildSrc/src/main/kotlin/plugins/publish-local.gradle")

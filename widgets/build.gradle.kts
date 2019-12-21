@@ -3,14 +3,14 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id("com.android.library")
-    id("de.mannodermaus.android-junit5")
     kotlin("android")
     kotlin("android.extensions")
+    id("junit-5")
 }
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion = Versions.buildTools
+    buildToolsVersion = Android.Versions.buildTools
 
     defaultConfig {
         minSdkVersion(21)
@@ -37,20 +37,14 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Cassidy
     implementation(project(":tools"))
 
-    // Kotlin
-    implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
 
-    // Android
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:${Versions.androidX}")
+    implementation(Android.Libraries.core)
+    implementation(Android.Libraries.appCompat)
 
-    // Unit test
     testImplementation(project(":test"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
 }
-apply(from = "../buildSrc/publish-local.gradle")
+
+apply(from = "../buildSrc/src/main/kotlin/plugins/publish-local.gradle")

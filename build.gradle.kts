@@ -4,9 +4,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:${Versions.gradleTools}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
-        classpath("de.mannodermaus.gradle.plugins:android-junit5:${Versions.jUnit5Plugin}")
+        classpath(Android.Plugins.gradle)
+        classpath(Kotlin.Plugins.gradle)
+        classpath(Testing.Plugins.jUnit)
     }
 }
 
@@ -16,7 +16,7 @@ allprojects {
         jcenter()
         flatDir { dir("src/main/libs") }
     }
-    apply(from = "$rootDir/buildSrc/test-logging.gradle.kts")
+    apply(plugin = "test-logging")
 }
 
 tasks {

@@ -10,7 +10,7 @@ plugins {
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion = Versions.buildTools
+    buildToolsVersion = Android.Versions.buildTools
 
     defaultConfig {
         minSdkVersion(21)
@@ -37,18 +37,15 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Kotlin
-    implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
-    api(kotlin("test"))
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}")
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
+    api(kotlin(Kotlin.Modules.test))
+    api(Kotlin.Libraries.coroutinesTest)
 
-    // Mocking
-    api("io.mockk:mockk:${Versions.mockk}")
+    api(Testing.Libraries.mockK)
 
-    // JUnit5
-    implementation("org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}")
-    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}")
-    implementation("org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}")
+    implementation(Testing.Libraries.jUnitApi)
+    runtimeOnly(Testing.Libraries.jUnitEngine)
+    implementation(Testing.Libraries.jUnitParams)
 }
 
-apply(from = "../buildSrc/publish-local.gradle")
+apply(from = "../buildSrc/src/main/kotlin/plugins/publish-local.gradle")

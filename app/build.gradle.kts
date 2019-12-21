@@ -9,7 +9,7 @@ plugins {
 
 android {
     compileSdkVersion(29)
-    buildToolsVersion = Versions.buildTools
+    buildToolsVersion = Android.Versions.buildTools
 
     defaultConfig {
         applicationId = "com.gocantar.cassidy.app"
@@ -41,18 +41,13 @@ dependencies {
 
     implementation(project(":widgets"))
 
-    // Kotlin
-    implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
 
-    // Android
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.1.0")
+    implementation(Android.Libraries.core)
+    implementation(Android.Libraries.appCompat)
 
-    // Unit test
-    testImplementation(kotlin("test"))
-    testImplementation(kotlin("test-junit"))
+    testImplementation(kotlin(Kotlin.Modules.test))
 
-    // Android test
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation(Android.Libraries.testRunner)
+    androidTestImplementation(Android.Libraries.espressoCore)
 }

@@ -18,8 +18,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewOutlineProvider
-import android.widget.ImageView
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatImageView
 import com.cassidy.widgets.R
 import com.cassidy.widgets.extensions.color
 import kotlin.math.min
@@ -33,7 +33,7 @@ import kotlin.math.sqrt
 
 open class RoundImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : ImageView(context, attrs, defStyleAttr) {
+) : AppCompatImageView(context, attrs, defStyleAttr) {
 
     private var isInitialize: Boolean = false
     private var isHighLightEnable: Boolean = false
