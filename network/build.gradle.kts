@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     id("com.android.library")
@@ -32,7 +31,7 @@ android {
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["test"].java.srcDir("src/test/kotlin")
 
-    (kotlinOptions as KotlinJvmOptions).apply {
+    kotlinOptions.apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
@@ -40,7 +39,6 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    // Cassidy
     implementation(project(":tools"))
 
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
@@ -50,7 +48,8 @@ dependencies {
 
     testImplementation(project(":test"))
 
-    testImplementation( group =  "com.squareup.okio", name = "okio", version = "2.4.2")
+    testImplementation(group = "com.squareup.okio", name = "okio", version = "2.4.2")
 
 }
-apply(from = "../buildSrc/src/main/kotlin/plugins/publish-local.gradle")
+
+apply(plugin = "publish-local")
