@@ -7,10 +7,10 @@ object Testing {
     }
 
     object Libraries {
-        val mockK = "io.mockk:mockk:${Versions.mockk}"
-        val jUnit5Api = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}"
-        val jUnit5Engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}"
-        val jUnit5Params = "org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}"
+        const val mockK = "io.mockk:mockk:${Versions.mockk}"
+        const val jUnit5Api = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}"
+        const val jUnit5Engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}"
+        const val jUnit5Params = "org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}"
     }
 
     object Plugins {
