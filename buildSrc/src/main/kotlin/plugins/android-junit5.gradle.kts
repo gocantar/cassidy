@@ -2,9 +2,9 @@
 apply(plugin = "de.mannodermaus.android-junit5")
 
 dependencies {
-    testImplementation(Testing.Libraries.jUnitApi)
-    testRuntimeOnly(Testing.Libraries.jUnitEngine)
-    testImplementation(Testing.Libraries.jUnitParams)
+    testImplementation(Testing.Libraries.jUnit5Api)
+    testRuntimeOnly(Testing.Libraries.jUnit5Engine)
+    testImplementation(Testing.Libraries.jUnit5Params)
 }
 
 fun DependencyHandler.testImplementation(dependencyNotation: Any): Dependency? =

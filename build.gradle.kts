@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         classpath(Android.Plugins.gradle)
         classpath(Kotlin.Plugins.gradle)
-        classpath(Testing.Plugins.jUnit)
+        classpath(Testing.Plugins.jUnit5)
     }
 }
 

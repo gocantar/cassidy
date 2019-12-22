@@ -43,9 +43,9 @@ dependencies {
 
     api(Testing.Libraries.mockK)
 
-    implementation(Testing.Libraries.jUnitApi)
-    runtimeOnly(Testing.Libraries.jUnitEngine)
-    implementation(Testing.Libraries.jUnitParams)
+    implementation(Testing.Libraries.jUnit5Api)
+    runtimeOnly(Testing.Libraries.jUnit5Engine)
+    implementation(Testing.Libraries.jUnit5Params)
 }
 
 apply(from = "../buildSrc/src/main/kotlin/plugins/publish-local.gradle")
