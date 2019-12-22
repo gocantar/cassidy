@@ -1,6 +1,11 @@
+
 import org.gradle.api.internal.tasks.testing.DecoratingTestDescriptor
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+/**
+ * This plugin configure the log for unit testing execution
+ */
 
 tasks.withType<Test> {
     val mainEvents = listOf(

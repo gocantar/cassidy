@@ -1,3 +1,8 @@
+
+/**
+ * This plugin publish a module as local artifact
+ */
+
 if (!rootProject.hasProperty('version')) {
     return
 }
