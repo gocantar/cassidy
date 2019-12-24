@@ -14,37 +14,43 @@ val sourcesJar by tasks.run {
     }
 }
 
+val artifact: Artifact.Local by lazy {
+    val version = property("version")
+        ?.takeIf { it != "unspecified" } ?: Artifact.version
+    Artifact.Local(project.name, version as String)
+}
+
 publishing {
     repositories {
         maven { setUrl(mavenLocal()) }
     }
     publications {
         create<MavenPublication>("maven") {
-            groupId = Artifact.groupId
-            version = Artifact.version
-            artifactId = project.name
+            groupId = artifact.groupId
+            version = artifact.version
+            artifactId = artifact.artifactId
             artifact("${project.buildDir}/outputs/aar/${project.name}-release.aar")
             artifact(sourcesJar)
             pom {
                 packaging = "aar"
                 withXml {
                     val root = asNode().appendNode("dependencies")
-                    addAllDependencyWithScope(root, "compile", "compile")
-                    addAllDependencyWithScope(root, "api", "compile")
-                    addAllDependencyWithScope(root, "implementation", "runtime")
-                    addAllDependencyWithScope(root, "compileOnly", "provided")
+                    root.addAllDependencyWithScope("compile", "compile")
+                    root.addAllDependencyWithScope("api", "compile")
+                    root.addAllDependencyWithScope("implementation", "runtime")
+                    root.addAllDependencyWithScope("compileOnly", "provided")
                 }
             }
         }
     }
 }
 
-fun addAllDependencyWithScope(root: Node, scope: String, pomScope: String) {
+fun Node.addAllDependencyWithScope(scope: String, pomScope: String) {
     configurations.findByName(scope)
         ?.dependencies
         ?.filter { it.group.isNullOrBlank().not() }
         ?.forEach { dependency ->
-            root.appendNode("dependency")?.apply {
+            appendNode("dependency")?.apply {
                 appendNode("groupId", dependency.group)
                 appendNode("artifactId", dependency.name)
                 appendNode("version", dependency.version)
