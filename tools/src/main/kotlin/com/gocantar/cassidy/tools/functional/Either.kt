@@ -12,7 +12,6 @@ package com.gocantar.cassidy.tools.functional
 sealed class Either<out L, out R> {
 
     val isRight: Boolean get() = this is Right<R>
-
     val isLeft: Boolean get() = this is Left<L>
 
     val left: L get() = when (this) {

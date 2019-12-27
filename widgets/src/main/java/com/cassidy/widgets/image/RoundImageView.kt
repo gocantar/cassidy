@@ -65,6 +65,19 @@ open class RoundImageView @JvmOverloads constructor(
         configureBitmap()
     }
 
+    private fun initializeAttributes(attributes: AttributeSet, defStyleAttr: Int) {
+        val styles = context.obtainStyledAttributes(
+            attributes, R.styleable.RoundImageView, defStyleAttr, 0
+        )
+        with(styles) {
+            strokeColor = getColor(R.styleable.RoundImageView_strokeColor, strokeColor)
+            strokeWidth = getDimension(R.styleable.RoundImageView_strokeWidth, strokeWidth)
+            highLightColor = getColor(R.styleable.RoundImageView_highlightColor, highLightColor)
+            isHighLightEnable = getBoolean(R.styleable.RoundImageView_isHighlightEnable, false)
+            recycle()
+        }
+    }
+
     override fun setImageResource(@DrawableRes resId: Int) {
         super.setImageResource(resId)
         configureBitmap()
@@ -130,19 +143,6 @@ open class RoundImageView @JvmOverloads constructor(
         val diameter = min(contentWidth, contentHeight)
         val (left, top) = getCircleBoundsOrigin(contentWidth, contentHeight)
         bitmapBounds.set(left, top, left + diameter, top + diameter)
-    }
-
-    private fun initializeAttributes(attributes: AttributeSet, defStyleAttr: Int) {
-        val styles = context.obtainStyledAttributes(
-            attributes, R.styleable.RoundImageView, defStyleAttr, 0
-        )
-        with(styles) {
-            strokeColor = getColor(R.styleable.RoundImageView_strokeColor, strokeColor)
-            strokeWidth = getDimension(R.styleable.RoundImageView_strokeWidth, strokeWidth)
-            highLightColor = getColor(R.styleable.RoundImageView_highlightColor, highLightColor)
-            isHighLightEnable = getBoolean(R.styleable.RoundImageView_isHighlightEnable, false)
-            recycle()
-        }
     }
 
     private fun configureBitmap() {
