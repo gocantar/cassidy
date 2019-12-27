@@ -19,8 +19,6 @@ internal class AmountTextViewModel(
     private val delegate: AmountStyleDelegate = AmountStyleDelegate()
 ) {
 
-    private val TOP_MINIMIZED_SYMBOL_STYLE = 1
-
     internal var currenciesFormat: List<CurrencyFormat> = emptyList()
 
     private val amount: MutableLiveData<AmountModel> = MutableLiveData()
@@ -30,10 +28,7 @@ internal class AmountTextViewModel(
     }
 
     internal fun configure(code: String?, symbolStyle: Int) {
-        val style = when (symbolStyle) {
-            TOP_MINIMIZED_SYMBOL_STYLE -> AmountModel.Style.TOP_MINIMIZED_SYMBOL
-            else -> AmountModel.Style.DEFAULT
-        }
+        val style = AmountModel.Style.values()[symbolStyle]
         amount.value = AmountModel(code = code, style = style)
     }
 
