@@ -39,17 +39,13 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(":tools"))
-
-    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-
     implementation(group = "com.squareup", name = "okhttp-4.2.2", ext = "jar")
     implementation(group = "com.squareup", name = "okhttp-urlconnection-4.2.2", ext = "jar")
-
-    testImplementation(project(":test"))
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
+    implementation(project(":tools"))
 
     testImplementation(group = "com.squareup.okio", name = "okio", version = "2.4.2")
-
+    testImplementation(project(":test"))
 }
 
 apply(plugin = "publish-local")

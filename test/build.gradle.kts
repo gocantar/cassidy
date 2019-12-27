@@ -39,15 +39,15 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     api(kotlin(Kotlin.Modules.test))
     api(Kotlin.Libraries.coroutinesTest)
-
     api(Testing.Libraries.mockK)
 
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(Testing.Libraries.jUnit5Api)
-    runtimeOnly(Testing.Libraries.jUnit5Engine)
     implementation(Testing.Libraries.jUnit5Params)
+
+    runtimeOnly(Testing.Libraries.jUnit5Engine)
 }
 
 apply(plugin = "publish-local")
