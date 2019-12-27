@@ -1,4 +1,3 @@
-
 import org.gradle.api.internal.tasks.testing.DecoratingTestDescriptor
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -22,7 +21,8 @@ tasks.withType<Test> {
         showStackTraces = false
     }
 
-    ignoreFailures = true
+    failFast = rootProject.property("failFast").toString().toBoolean()
+    ignoreFailures = rootProject.property("ignoreFailures").toString().toBoolean()
 
     afterSuite(KotlinClosure2<DecoratingTestDescriptor, TestResult, Unit>({ descriptor, result ->
         takeIf { descriptor.isRoot }?.run {
