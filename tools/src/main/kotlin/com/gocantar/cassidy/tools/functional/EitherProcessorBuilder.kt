@@ -9,7 +9,6 @@ class EitherProcessorBuilder<L, R> {
     lateinit var either: Either<L, R>
 
     private var left: (L) -> Unit = {}
-
     private var right: (R) -> Unit = {}
 
     fun left(block: (L) -> Unit) { this.left = block }

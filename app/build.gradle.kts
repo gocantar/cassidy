@@ -47,6 +47,7 @@ dependencies {
 
     implementation(Android.Libraries.core)
     implementation(Android.Libraries.appCompat)
+    implementation(Android.Libraries.constraintLayout)
 
     testImplementation(kotlin(Kotlin.Modules.test))
 
