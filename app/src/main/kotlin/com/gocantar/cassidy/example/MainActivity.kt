@@ -7,6 +7,7 @@ import com.cassidy.widgets.text.amount.models.Amount
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
 import com.gocantar.cassidy.app.R
 import kotlinx.android.synthetic.main.activity_main.*
+import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun configureAmountLabel() {
         amountLabel.provideFormats(listOf(EURO_FORMAT))
-        amountLabel.setAmount(Amount(200.00))
+        val amount = BigDecimal.valueOf(2000.00)
+        amountLabel.setAmount(Amount(amount))
     }
 }
