@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
 @ExperimentalCoroutinesApi
-class CoroutinesTestRule(
+class CoroutinesTestExtension(
     val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher(),
     val scope: TestCoroutineScope = TestCoroutineScope(dispatcher)
 ) : BeforeAllCallback, AfterEachCallback {

@@ -6,7 +6,7 @@ import android.text.SpannableStringBuilder
 import android.text.TextPaint
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
-import com.cassidy.widgets.text.amount.models.AmountModel
+import com.cassidy.widgets.text.amount.models.Amount
 
 /**
  * @author Gonzalo Cantarero Pérez
@@ -14,11 +14,11 @@ import com.cassidy.widgets.text.amount.models.AmountModel
 
 class AmountStyleDelegate {
 
-    fun transform(amountFormatted: String?, symbol: String?, style: AmountModel.Style): Spannable {
+    fun transform(amountFormatted: String?, symbol: String?, style: Amount.Style): Spannable {
         amountFormatted ?: return SpannableString.valueOf("")
         return when (style) {
-            AmountModel.Style.TOP_MINIMIZED_SYMBOL -> amountFormatted.minimizeCharAtTop(symbol)
-            AmountModel.Style.DEFAULT -> SpannableString.valueOf(amountFormatted)
+            Amount.Style.TOP_MINIMIZED_SYMBOL -> amountFormatted.minimizeCharAtTop(symbol)
+            Amount.Style.DEFAULT -> SpannableString.valueOf(amountFormatted)
         }
     }
 

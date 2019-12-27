@@ -31,7 +31,6 @@ class CurrencyFormatterTest : UnitTest {
         result equal amountFormatted
     }
 
-
     @DisplayName("Given negative amount")
     @ParameterizedTest(name = "Should be format to {1}")
     @MethodSource("negativeParameterizedArguments")
@@ -53,7 +52,6 @@ class CurrencyFormatterTest : UnitTest {
             assertNull(result)
         }
     }
-
 
     companion object {
         @JvmStatic
@@ -111,5 +109,4 @@ class CurrencyFormatterTest : UnitTest {
             decimalSeparator = CurrencyFormat.Separator.DOT
         )
     }
-
 }

@@ -1,6 +1,6 @@
 package com.gocantar.cassidy.core.domain.usecase
 
-import com.gocantar.cassidy.test.base.ViewModelUnitTest
+import com.gocantar.cassidy.test.base.CoroutineTest
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 @ExperimentalCoroutinesApi
 @DisplayName("Use Case´s")
-class UseCaseTest : ViewModelUnitTest() {
+class UseCaseTest : CoroutineTest() {
 
     private val useCase: MockedUseCase = spyk(MockedUseCase())
 

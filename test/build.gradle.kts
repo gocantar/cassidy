@@ -43,6 +43,7 @@ dependencies {
     api(Kotlin.Libraries.coroutinesTest)
     api(Testing.Libraries.mockK)
 
+    implementation(Android.Libraries.coreTesting)
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(Testing.Libraries.jUnit5Api)
     implementation(Testing.Libraries.jUnit5Params)
