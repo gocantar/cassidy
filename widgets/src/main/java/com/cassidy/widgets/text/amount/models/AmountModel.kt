@@ -1,11 +1,13 @@
 package com.cassidy.widgets.text.amount.models
 
+import java.math.BigDecimal
+
 /**
  * @author Gonzalo Cantarero Pérez
  */
 
 data class AmountModel(
-    var value: Double? = null,
+    var value: BigDecimal? = null,
     var code: String? = null,
     var style: Style = Style.DEFAULT
 ) {

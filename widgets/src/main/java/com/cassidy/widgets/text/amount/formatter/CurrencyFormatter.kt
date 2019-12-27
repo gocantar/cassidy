@@ -1,6 +1,7 @@
 package com.cassidy.widgets.text.amount.formatter
 
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
+import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -12,7 +13,7 @@ class CurrencyFormatter {
 
     private val NUMBER_OF_DECIMALS = 2
 
-    fun format(amount: Double?, currentFormat: CurrencyFormat?): String? {
+    fun format(amount: BigDecimal?, currentFormat: CurrencyFormat?): String? {
         amount ?: return null
         val format = currentFormat ?: CurrencyFormat()
         val formatter = getDecimalFormatterInstance().apply {
