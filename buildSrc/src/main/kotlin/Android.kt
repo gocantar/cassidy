@@ -6,14 +6,16 @@ object Android {
         const val constraintLayout = "2.0.0-beta4"
         const val espressoCore = "3.2.0"
         const val gradleTools = "3.5.3"
+        const val liveData = "2.2.0-alpha03"
         const val testRunner = "1.2.0"
     }
 
     object Libraries {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.androidX}"
-        const val core = "androidx.core:core-ktx:${Versions.androidX}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val core = "androidx.core:core-ktx:${Versions.androidX}"
         const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
         const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     }
 

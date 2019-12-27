@@ -41,16 +41,14 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(project(":widgets"))
-
-    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-
-    implementation(Android.Libraries.core)
     implementation(Android.Libraries.appCompat)
     implementation(Android.Libraries.constraintLayout)
+    implementation(Android.Libraries.core)
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
+    implementation(project(":widgets"))
 
     testImplementation(kotlin(Kotlin.Modules.test))
 
-    androidTestImplementation(Android.Libraries.testRunner)
     androidTestImplementation(Android.Libraries.espressoCore)
+    androidTestImplementation(Android.Libraries.testRunner)
 }

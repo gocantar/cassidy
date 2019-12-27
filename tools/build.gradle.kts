@@ -39,9 +39,8 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-
     implementation(Android.Libraries.core)
+    implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
 
     testImplementation(project(":test"))
 }
