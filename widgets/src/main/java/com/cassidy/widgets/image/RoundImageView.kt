@@ -26,13 +26,14 @@ import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-
 /**
  * @author Gonzalo Cantarero Pérez
  */
 
 open class RoundImageView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : AppCompatImageView(context, attrs, defStyleAttr) {
 
     private var isInitialize: Boolean = false
@@ -180,7 +181,6 @@ open class RoundImageView @JvmOverloads constructor(
         strokeBounds.inset(halfStrokeWidth, halfStrokeWidth)
         outlineProvider = RoundImageViewOutlineProvider(strokeBounds)
     }
-
 
     private fun getCircleBoundsOrigin(width: Int, height: Int): Pair<Float, Float> {
         var left = paddingLeft.toFloat()

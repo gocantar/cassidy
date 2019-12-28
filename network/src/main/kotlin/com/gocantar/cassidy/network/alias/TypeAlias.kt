@@ -2,7 +2,7 @@ package com.gocantar.cassidy.network.alias
 
 import com.gocantar.cassidy.network.model.error.NetworkError
 import com.gocantar.cassidy.network.model.response.NetworkResponse
-import com.gocantar.cassidy.tools.functional.Either
+import com.gocantar.cassidy.tools.either.Either
 import okhttp3.Request
 
 /**

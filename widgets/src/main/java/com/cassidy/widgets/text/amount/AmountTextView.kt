@@ -6,8 +6,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.cassidy.widgets.R
 import com.cassidy.widgets.text.CustomTextView
+import com.cassidy.widgets.text.amount.delegates.AmountStyleDelegate
 import com.cassidy.widgets.text.amount.models.Amount
-import com.cassidy.widgets.text.amount.models.AmountModel
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
 
 /**
@@ -15,29 +15,32 @@ import com.cassidy.widgets.text.amount.models.CurrencyFormat
  */
 
 class AmountTextView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : CustomTextView(context, attrs, defStyleAttr) {
 
     private val viewModel: AmountTextViewModel = AmountTextViewModel()
 
-    init {
-        attrs?.let { initializeAttributes(it, defStyleAttr) }
-    }
+    private val style: Amount.Style
+    private val styleDelegate: AmountStyleDelegate = AmountStyleDelegate()
 
-    private fun initializeAttributes(attributes: AttributeSet, defStyleAttr: Int) {
+    init {
         val styles = context.obtainStyledAttributes(
-            attributes, R.styleable.AmountTextView, defStyleAttr, 0
+            attrs, R.styleable.AmountTextView, defStyleAttr, 0
         )
         with(styles) {
-            val code = getString(R.styleable.AmountTextView_code)
-            val symbolStyle = getInt(R.styleable.AmountTextView_symbolStyle, 0)
-            viewModel.configure(code, symbolStyle)
+            style = Amount.Style.values()[getInt(R.styleable.AmountTextView_symbolStyle, 0)]
+            viewModel.configure(getString(R.styleable.AmountTextView_code))
             recycle()
         }
     }
 
     override fun onLifecycleOwnerAttached(lifecycleOwner: LifecycleOwner) {
-        viewModel.amountLabel.observe(lifecycleOwner, Observer { text = it })
+        viewModel.amountLabel.observe(lifecycleOwner, Observer { amountLabel ->
+            val (amount, symbol) = amountLabel
+            text = styleDelegate.transform(amount, symbol, style)
+        })
     }
 
     fun setAmount(amount: Amount) {

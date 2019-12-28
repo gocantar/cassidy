@@ -53,9 +53,9 @@ class CurrencyFormatter {
     private fun CurrencyFormat.configureNegativePrefix(): String {
         return when {
             symbolBehaviour == CurrencyFormat.Behaviour.LEFT &&
-                signBehavior == CurrencyFormat.Behaviour.LEFT -> "-${symbol}"
+                signBehavior == CurrencyFormat.Behaviour.LEFT -> "-$symbol"
             symbolBehaviour == CurrencyFormat.Behaviour.LEFT &&
-                signBehavior == CurrencyFormat.Behaviour.RIGHT -> "${symbol}-"
+                signBehavior == CurrencyFormat.Behaviour.RIGHT -> "$symbol-"
             else -> "-"
         }
     }

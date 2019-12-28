@@ -2,6 +2,7 @@ object Android {
 
     object Versions {
         const val androidX = "1.1.0"
+        const val archCore = "2.1.0"
         const val buildTools = "29.0.2"
         const val constraintLayout = "2.0.0-beta4"
         const val espressoCore = "3.2.0"
@@ -14,6 +15,7 @@ object Android {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.androidX}"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val core = "androidx.core:core-ktx:${Versions.androidX}"
+        const val coreTesting = "androidx.arch.core:core-testing:${Versions.archCore}"
         const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
         const val testRunner = "androidx.test:runner:${Versions.testRunner}"

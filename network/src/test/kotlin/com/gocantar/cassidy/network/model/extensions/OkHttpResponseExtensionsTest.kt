@@ -2,9 +2,9 @@ package com.gocantar.cassidy.network.model.extensions
 
 import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
 import com.gocantar.cassidy.network.model.request.NetworkRequest
-import com.gocantar.cassidy.test.base.UnitTest
-import com.gocantar.cassidy.test.base.mock
+import com.gocantar.cassidy.test.UnitTest
 import com.gocantar.cassidy.test.extensions.assertThat
+import com.gocantar.cassidy.test.extensions.mock
 import io.mockk.every
 import okhttp3.Response
 import okhttp3.ResponseBody
@@ -43,9 +43,8 @@ class OkHttpResponseExtensionsTest : UnitTest {
         val networkError = okHttpResponse.asNetworkResponse(networkRequest).asError()
         networkError.assertThat {
             val isError = code == 400
-            val isBodyCorrect =
-                response?.body?.bytes?.contentEquals("Cassidy Project Error".toByteArray(Charsets.UTF_8))
-                    ?: false
+            val isBodyCorrect = response?.body?.bytes
+                ?.contentEquals("Cassidy Project Error".toByteArray(Charsets.UTF_8)) ?: false
             val isRequestCorrect = response?.request == networkRequest
             isError && isBodyCorrect && isRequestCorrect
         }

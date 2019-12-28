@@ -6,4 +6,4 @@ import java.lang.Exception
  * @author Gonzalo Cantarero Pérez
  */
 
-class LifecycleOwnerNotFoundException: Exception()
+class LifecycleOwnerNotFoundException : Exception()

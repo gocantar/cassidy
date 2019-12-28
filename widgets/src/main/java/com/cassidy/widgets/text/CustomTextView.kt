@@ -11,10 +11,8 @@ import com.cassidy.widgets.exceptions.LifecycleOwnerNotFoundException
  * @author Gonzalo Cantarero Pérez
  */
 
-abstract class CustomTextView(
-    context: Context, attrs: AttributeSet?, defStyleAttr: Int
-) : AppCompatTextView(context, attrs, defStyleAttr),
-    LifecycleView {
+abstract class CustomTextView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+    AppCompatTextView(context, attrs, defStyleAttr), LifecycleView {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
