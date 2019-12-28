@@ -3,7 +3,7 @@ package com.gocantar.cassidy.network.manager
 import com.gocantar.cassidy.network.model.error.NetworkError
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.response.NetworkResponse
-import com.gocantar.cassidy.tools.functional.Either
+import com.gocantar.cassidy.tools.either.Either
 
 /**
  * @author Gonzalo Cantarero Pérez

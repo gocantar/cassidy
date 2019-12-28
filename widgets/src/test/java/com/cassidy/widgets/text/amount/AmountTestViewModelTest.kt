@@ -4,8 +4,8 @@ import androidx.lifecycle.Observer
 import com.cassidy.widgets.text.amount.formatter.CurrencyFormatter
 import com.cassidy.widgets.text.amount.models.Amount
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
-import com.gocantar.cassidy.test.base.UnitTest
-import com.gocantar.cassidy.test.base.mock
+import com.gocantar.cassidy.test.UnitTest
+import com.gocantar.cassidy.test.extensions.mock
 import com.gocantar.cassidy.test.rules.InstantTaskExecutorExtension
 import io.mockk.clearMocks
 import io.mockk.confirmVerified

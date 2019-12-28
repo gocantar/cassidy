@@ -1,12 +1,9 @@
-package com.gocantar.cassidy.tools
+package com.gocantar.cassidy.tools.either
 
 import com.gocantar.cassidy.test.extensions.assertThat
 import com.gocantar.cassidy.test.extensions.equal
-import com.gocantar.cassidy.tools.functional.Either
-import com.gocantar.cassidy.tools.functional.extensions.either
-import com.gocantar.cassidy.tools.functional.extensions.fold
-import com.gocantar.cassidy.tools.functional.extensions.map
-import com.gocantar.cassidy.tools.functional.extensions.mapError
+import com.gocantar.cassidy.tools.either.extensions.either
+import com.gocantar.cassidy.tools.either.extensions.fold
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -62,7 +59,7 @@ class EitherTest {
 
         @Test
         @DisplayName("Given a block when is execute successfully then return right either")
-        fun givvenABlock_whenIsExecutedSuccess_thenReturnARightValue() {
+        fun givenABlock_whenIsExecutedSuccess_thenReturnARightValue() {
             val number = "10"
             val either: Either<Exception, Int> = either { number.toInt() }
             either.right equal 10

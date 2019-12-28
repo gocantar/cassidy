@@ -1,10 +1,10 @@
-package com.gocantar.cassidy.tools.functional
+package com.gocantar.cassidy.tools.either
 
 /**
  * @author Gonzalo Cantarero Pérez, Mar 2019
  */
 
-class EitherProcessorBuilder<L, R> {
+class EitherFoldDSLBuilder<L, R> {
 
     lateinit var either: Either<L, R>
 

@@ -1,8 +1,7 @@
-package com.cassidy.widgets.text.amount
+package com.cassidy.widgets.text.amount.formatter
 
-import com.cassidy.widgets.text.amount.formatter.CurrencyFormatter
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
-import com.gocantar.cassidy.test.base.UnitTest
+import com.gocantar.cassidy.test.UnitTest
 import com.gocantar.cassidy.test.extensions.equal
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -48,7 +47,9 @@ class CurrencyFormatterTest : UnitTest {
         @DisplayName("Should return null")
         fun whenAmountIsNull_shouldReturnNull() {
             val formatter = CurrencyFormatter()
-            val result = formatter.format(null, format01)
+            val result = formatter.format(null,
+                format01
+            )
             assertNull(result)
         }
     }

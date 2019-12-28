@@ -1,5 +1,6 @@
 package com.gocantar.cassidy.test.base
 
+import com.gocantar.cassidy.test.UnitTest
 import com.gocantar.cassidy.test.rules.CoroutinesTestExtension
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher

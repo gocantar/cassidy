@@ -3,7 +3,7 @@
  *  Copyright (c) 2019 . All rights reserved.
  */
 
-package com.gocantar.cassidy.tools.functional
+package com.gocantar.cassidy.tools.either
 
 /**
  * @author Gonzalo Cantarero Pérez, Mar 2019
@@ -31,5 +31,19 @@ sealed class Either<out L, out R> {
     companion object {
         fun <L> left(value: L): Either<L, Nothing> = Left(value)
         fun <R> right(value: R): Either<Nothing, R> = Right(value)
+    }
+
+    inline fun <R2> map(transform: (R) -> R2): Either<L, R2> {
+        return when (this) {
+            is Left -> this
+            is Right -> right(transform(value))
+        }
+    }
+
+    inline fun <L2> mapError(transform: (L) -> L2): Either<L2, R> {
+        return when (this) {
+            is Left -> left(transform(value))
+            is Right -> this
+        }
     }
 }

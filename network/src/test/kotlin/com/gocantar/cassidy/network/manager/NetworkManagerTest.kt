@@ -6,10 +6,10 @@ import com.gocantar.cassidy.network.model.extensions.asOkHttpRequest
 import com.gocantar.cassidy.network.model.extensions.okhttp.asNetworkResponse
 import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.response.NetworkResponse
-import com.gocantar.cassidy.test.base.UnitTest
-import com.gocantar.cassidy.test.base.mock
+import com.gocantar.cassidy.test.UnitTest
 import com.gocantar.cassidy.test.extensions.assertThat
-import com.gocantar.cassidy.tools.functional.Either
+import com.gocantar.cassidy.test.extensions.mock
+import com.gocantar.cassidy.tools.either.Either
 import io.mockk.CapturingSlot
 import io.mockk.every
 import io.mockk.mockkStatic
