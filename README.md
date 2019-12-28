@@ -3,14 +3,20 @@
 
 # CASSIDY
 Project description
+
 ## CORE
 Description + link
+
 ## TOOLS
 Description + link
+
 ## WIDGETS
 Description + link
+
 ## NETWORK
 [![ktlint](https://img.shields.io/badge/dependency-OkHttp3-blue?style=flat-square)](https://github.com/square/okhttp)
+
 Description + link
+
 ## TESTING
 Description + link
