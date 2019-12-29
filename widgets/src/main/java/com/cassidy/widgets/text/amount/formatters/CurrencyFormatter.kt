@@ -1,4 +1,4 @@
-package com.cassidy.widgets.text.amount.formatter
+package com.cassidy.widgets.text.amount.formatters
 
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
 import java.math.BigDecimal

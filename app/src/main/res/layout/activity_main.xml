@@ -13,10 +13,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:backgroundAvatarColor="@color/grey"
-        app:avatarStyle="twoInitials"
+        app:avatarStyle="oneInitial"
+        app:backgroundBehaviour="fixed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:textSize="50sp"/>
+        app:textSize="44sp"/>
 
     <com.cassidy.widgets.text.amount.AmountTextView
         android:id="@+id/amountLabel"

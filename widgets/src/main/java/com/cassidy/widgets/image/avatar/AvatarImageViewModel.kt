@@ -3,30 +3,39 @@ package com.cassidy.widgets.image.avatar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.cassidy.widgets.image.avatar.formatter.AvatarFormatter
+import com.cassidy.widgets.image.avatar.delegates.AvatarColorPickerDelegate
+import com.cassidy.widgets.image.avatar.formatters.AvatarFormatter
 import com.cassidy.widgets.image.avatar.models.Avatar
 
+internal class AvatarImageViewModel(
+    private val formatter: AvatarFormatter = AvatarFormatter(),
+    private val colorPicker: AvatarColorPickerDelegate = AvatarColorPickerDelegate()
+) {
 
-internal class AvatarImageViewModel(private val formatter: AvatarFormatter = AvatarFormatter()) {
+    private val state: MutableLiveData<Avatar> = MutableLiveData()
+    internal val avatar: LiveData<Pair<String?, Int>> = state.map { transform(it) }
 
-    private val avatar: MutableLiveData<Avatar> = MutableLiveData()
+    private var backgroundBehaviour: Avatar.Behaviour = Avatar.Behaviour.FIXED
 
-    internal val text: LiveData<String?> = avatar.map { transform(it) }
+    private val style: Avatar.Style get() = state.value?.style ?: Avatar.Style.NONE
 
-    private val style: Avatar.Style
-        get() = avatar.value?.style ?: Avatar.Style.DEFAULT
-
-    internal fun configure(avatarStyle: Int) {
-        val style = Avatar.Style.values()[avatarStyle]
-        avatar.value = Avatar(style = style)
+    internal fun configure(avatarStyle: Int, behaviour: Int) {
+        backgroundBehaviour = Avatar.Behaviour.values()[behaviour]
+        state.value = Avatar(style = Avatar.Style.values()[avatarStyle])
     }
 
     internal fun setAvatar(value: Avatar) {
-        avatar.value = Avatar(value.first, value.second, value.style ?: style)
+        state.value = Avatar(value.first, value.second, value.style ?: style)
     }
 
-    private fun transform(avatar: Avatar) = when (avatar.style ?: Avatar.Style.DEFAULT) {
-        Avatar.Style.DEFAULT,
+    private fun transform(avatar: Avatar): Pair<String?, Int> {
+        val color = colorPicker.pick(avatar, backgroundBehaviour)
+        val initials = format(avatar)
+        return Pair(initials, color)
+    }
+
+    private fun format(avatar: Avatar) = when (avatar.style ?: Avatar.Style.NONE) {
+        Avatar.Style.NONE,
         Avatar.Style.ONE_INITIAL,
         Avatar.Style.TWO_INITIALS -> formatter.format(avatar)
         else -> null

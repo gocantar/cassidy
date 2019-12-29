@@ -1,4 +1,4 @@
-package com.cassidy.widgets.text.amount.formatter
+package com.cassidy.widgets.text.amount.formatters
 
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
 import com.gocantar.cassidy.test.UnitTest
@@ -47,7 +47,8 @@ class CurrencyFormatterTest : UnitTest {
         @DisplayName("Should return null")
         fun whenAmountIsNull_shouldReturnNull() {
             val formatter = CurrencyFormatter()
-            val result = formatter.format(null,
+            val result = formatter.format(
+                null,
                 format01
             )
             assertNull(result)

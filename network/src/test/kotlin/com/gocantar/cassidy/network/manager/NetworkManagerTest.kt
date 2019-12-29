@@ -8,6 +8,7 @@ import com.gocantar.cassidy.network.model.request.NetworkRequest
 import com.gocantar.cassidy.network.model.response.NetworkResponse
 import com.gocantar.cassidy.test.UnitTest
 import com.gocantar.cassidy.test.extensions.assertThat
+import com.gocantar.cassidy.test.extensions.equal
 import com.gocantar.cassidy.test.extensions.mock
 import com.gocantar.cassidy.tools.either.Either
 import io.mockk.CapturingSlot
@@ -26,7 +27,6 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import java.io.IOException
 import javax.net.ssl.SSLException
-import kotlin.test.assertEquals
 
 /**
  * @author Gonzalo Cantarero Pérez
@@ -58,7 +58,7 @@ class NetworkManagerTest : UnitTest {
         fun givenNetworkRequest_whenResponseIsSuccess_thenReturnSuccessNetworkResult() {
             mockSyncResponseResult(true)
             val result = networkManager.execute(networkRequest)
-            assertEquals(networkResponse, result.right)
+            result.right equal networkResponse
         }
 
         @Test
@@ -66,7 +66,7 @@ class NetworkManagerTest : UnitTest {
         fun givenNetworkRequest_whenResponseIsNoSuccessFull_thenReturnErrorNetworkResult() {
             mockSyncResponseResult(false)
             val result = networkManager.execute(networkRequest)
-            assertEquals(networkError, result.left)
+            result.left equal networkError
         }
 
         @Test
