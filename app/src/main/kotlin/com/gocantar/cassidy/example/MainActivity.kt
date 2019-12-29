@@ -3,6 +3,7 @@ package com.gocantar.cassidy.example
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cassidy.widgets.image.avatar.models.Avatar
 import com.cassidy.widgets.text.amount.models.Amount
 import com.cassidy.widgets.text.amount.models.CurrencyFormat
 import com.gocantar.cassidy.app.R
@@ -28,8 +29,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureRoundImage() {
+        roundImage.setAvatar(Avatar("Gonzalo", "M"))
         roundImage.setOnClickListener {
             Toast.makeText(baseContext, "Image tapped", Toast.LENGTH_LONG).show()
+            roundImage.setAvatar(Avatar("Maria", "M", Avatar.Style.TWO_INITIALS))
         }
     }
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="avatar_color_00">#95a5a6</color>
+    <color name="avatar_color_01">#7f8c8d</color>
+    <color name="avatar_color_02">#34495e</color>
+    <color name="avatar_color_03">#2c3e50</color>
+    <color name="avatar_color_04">#3498db</color>
+    <color name="avatar_color_05">#2980b9</color>
+    <color name="avatar_color_06">#1abc9c</color>
+    <color name="avatar_color_07">#16a085</color>
+    <color name="avatar_color_08">#2ecc71</color>
+    <color name="avatar_color_09">#27ae60</color>
+    <color name="avatar_color_10">#f1c40f</color>
+    <color name="avatar_color_11">#f39c12</color>
+    <color name="avatar_color_12">#e67e22</color>
+    <color name="avatar_color_13">#d35400</color>
+    <color name="avatar_color_14">#e74c3c</color>
+    <color name="avatar_color_15">#c0392b</color>
+    <color name="avatar_color_16">#9b59b6</color>
+    <color name="avatar_color_17">#8e44ad</color>
+
+    <array name="avatar_colors">
+        <item>@color/avatar_color_00</item>
+        <item>@color/avatar_color_01</item>
+        <item>@color/avatar_color_02</item>
+        <item>@color/avatar_color_03</item>
+        <item>@color/avatar_color_04</item>
+        <item>@color/avatar_color_05</item>
+        <item>@color/avatar_color_06</item>
+        <item>@color/avatar_color_07</item>
+        <item>@color/avatar_color_08</item>
+        <item>@color/avatar_color_09</item>
+        <item>@color/avatar_color_10</item>
+        <item>@color/avatar_color_11</item>
+        <item>@color/avatar_color_12</item>
+        <item>@color/avatar_color_13</item>
+        <item>@color/avatar_color_14</item>
+        <item>@color/avatar_color_15</item>
+        <item>@color/avatar_color_16</item>
+        <item>@color/avatar_color_17</item>
+    </array>
+</resources>

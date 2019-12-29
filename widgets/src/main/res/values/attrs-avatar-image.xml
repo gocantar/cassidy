@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AvatarImageView">
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color" />
+        <attr name="backgroundAvatarColor" format="color" />
+        <attr name="avatarStyle" format="enum" >
+            <enum name="none" value="0"/>
+            <enum name="oneInitial" value="1"/>
+            <enum name="twoInitials" value="2"/>
+            <enum name="image" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
