@@ -46,7 +46,7 @@ dependencies {
     implementation(group = "com.squareup", name = "okhttp-4.2.2", ext = "jar")
     implementation(group = "com.squareup", name = "okhttp-urlconnection-4.2.2", ext = "jar")
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-    implementation("com.gocantar.cassidy:tools:0.1.0-alpha0")
+    implementation("com.gocantar.cassidy:tools:0.1.0")
 
     testImplementation(group = "com.squareup.okio", name = "okio", version = "2.4.2")
     testImplementation(project(":test"))

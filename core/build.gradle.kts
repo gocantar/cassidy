@@ -43,7 +43,7 @@ dependencies {
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(Kotlin.Libraries.coroutinesAndroid)
     implementation(Kotlin.Libraries.coroutinesCore)
-    implementation("com.gocantar.cassidy:tools:0.1.0-alpha0")
+    implementation("com.gocantar.cassidy:tools:0.1.0")
 
     testImplementation(project(":test"))
 }

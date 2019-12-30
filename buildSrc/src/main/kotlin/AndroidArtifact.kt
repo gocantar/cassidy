@@ -1,6 +1,6 @@
 object AndroidArtifact {
 
-    const val version = "0.1.0-alpha0"
+    const val version = "0.1.0"
     const val versionDescription = "Pre-release"
     const val groupId = "com.gocantar.cassidy"
 
@@ -11,5 +11,4 @@ object AndroidArtifact {
     const val projectIssuesTrackerUrl = "https://github.com/gocantar/cassidy/issues"
 
     const val apacheLicence = "Apache-2.0"
-
 }
