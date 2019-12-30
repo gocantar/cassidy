@@ -1,0 +1,30 @@
+/**
+ * This plugin upload android an Android artifact in bintray
+ */
+
+apply(plugin: "com.jfrog.bintray")
+
+bintray {
+    user = rootProject.hasProperty("bintray.user") ? rootProject.property("bintray.user") : ""
+    key = rootProject.hasProperty("bintray.apikey") ? rootProject.property("bintray.apikey") : ""
+    setPublications(project.name)
+    dryRun = false
+    publish = true
+    override = false
+    pkg {
+        userOrg = "${AndroidArtifact.alias}"
+        repo = "${AndroidArtifact.project}"
+        name = "${AndroidArtifact.groupId}.${project.name}"
+        websiteUrl = "${AndroidArtifact.projectUrl}"
+        vcsUrl = "${AndroidArtifact.projectGit}"
+        issueTrackerUrl = "${AndroidArtifact.projectIssuesTrackerUrl}"
+        setLabels("Android", "Kotlin")
+        setLicenses("${AndroidArtifact.apacheLicence}")
+        version {
+            name = "${AndroidArtifact.version}"
+            desc = "${AndroidArtifact.version}"
+            released = new Date().toString()
+            vcsTag = "${AndroidArtifact.version}"
+        }
+    }
+}

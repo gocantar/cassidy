@@ -43,9 +43,10 @@ dependencies {
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(Kotlin.Libraries.coroutinesAndroid)
     implementation(Kotlin.Libraries.coroutinesCore)
-    implementation(project(":tools"))
+    implementation("com.gocantar.cassidy:tools:0.1.0-alpha0")
 
     testImplementation(project(":test"))
 }
 
-apply(plugin = "publish-local")
+apply(plugin = "publish-maven")
+apply(from = "../buildSrc/src/main/kotlin/plugins/bintray-upload.gradle")

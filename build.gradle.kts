@@ -2,11 +2,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenLocal()
     }
     dependencies {
         classpath(Android.Plugins.gradle)
         classpath(Kotlin.Plugins.gradle)
         classpath(Testing.Plugins.jUnit5)
+        classpath(Others.Plugins.bintray)
     }
 }
 
@@ -14,7 +16,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        flatDir { dir("src/main/libs") }
+        mavenLocal()
     }
     apply(plugin = "test-logging")
 }

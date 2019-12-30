@@ -14,38 +14,43 @@ val sourcesJar by tasks.run {
     }
 }
 
-val artifact: Artifact.Local by lazy {
-    val version = property("version")
-        ?.takeIf { it != "unspecified" } ?: Artifact.version
-    Artifact.Local(project.name, version as String)
-}
+val artifactVersion: String
+    get() = property("version")
+        ?.takeIf { it != "unspecified" } as? String ?: AndroidArtifact.version
 
 publishing {
     repositories {
         maven { setUrl(mavenLocal()) }
     }
     publications {
-        create<MavenPublication>("maven") {
-            groupId = artifact.groupId
-            version = artifact.version
-            artifactId = artifact.artifactId
+        create<MavenPublication>(project.name) {
+            groupId = AndroidArtifact.groupId
+            version = artifactVersion
+            artifactId = project.name
             artifact("${project.buildDir}/outputs/aar/${project.name}-release.aar")
             artifact(sourcesJar)
             pom {
                 packaging = "aar"
                 withXml {
-                    val root = asNode().appendNode("dependencies")
-                    root.addAllDependencyWithScope("compile", "compile")
-                    root.addAllDependencyWithScope("api", "compile")
-                    root.addAllDependencyWithScope("implementation", "runtime")
-                    root.addAllDependencyWithScope("compileOnly", "provided")
+                    val dependencies = asNode().appendNode("dependencies")
+                    dependencies.add("compile", "compile")
+                    dependencies.add("api", "compile")
+                    dependencies.add("implementation", "runtime")
+                    dependencies.add("compileOnly", "provided")
+                    asNode().appendNode("developers").appendNode("developer").apply {
+                        appendNode("id", "gocantar")
+                        appendNode("name", "Gonzalo Cantarer Perez")
+                    }
+                    asNode().appendNode("scm").apply {
+                        appendNode("url", "https://github.com/gocantar/cassidy")
+                    }
                 }
             }
         }
     }
 }
 
-fun Node.addAllDependencyWithScope(scope: String, pomScope: String) {
+fun Node.add(scope: String, pomScope: String) {
     configurations.findByName(scope)
         ?.dependencies
         ?.filter { it.group.isNullOrBlank().not() }

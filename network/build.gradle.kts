@@ -7,6 +7,10 @@ plugins {
     id("android-junit5")
 }
 
+repositories {
+    flatDir { dir("src/main/libs") }
+}
+
 android {
     compileSdkVersion(29)
     buildToolsVersion = Android.Versions.buildTools
@@ -42,10 +46,11 @@ dependencies {
     implementation(group = "com.squareup", name = "okhttp-4.2.2", ext = "jar")
     implementation(group = "com.squareup", name = "okhttp-urlconnection-4.2.2", ext = "jar")
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-    implementation(project(":tools"))
+    implementation("com.gocantar.cassidy:tools:0.1.0-alpha0")
 
     testImplementation(group = "com.squareup.okio", name = "okio", version = "2.4.2")
     testImplementation(project(":test"))
 }
 
-apply(plugin = "publish-local")
+apply(plugin = "publish-maven")
+apply(from = "../buildSrc/src/main/kotlin/plugins/bintray-upload.gradle")
