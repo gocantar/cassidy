@@ -2,5 +2,7 @@
 <resources>
     <color name="transparent">#00000000</color>
     <color name="highlight">#32000000</color>
-    <color name="grey">#DEDEDE</color>
+    <color name="white">#ffffff</color>
+    <color name="grey">#dedede</color>
+    <color name="black">#000000</color>
 </resources>

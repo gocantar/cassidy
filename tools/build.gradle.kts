@@ -45,4 +45,5 @@ dependencies {
     testImplementation(project(":test"))
 }
 
-apply(plugin = "publish-local")
+apply(plugin = "publish-maven")
+apply(from = "../buildSrc/src/main/kotlin/plugins/bintray-upload.gradle")

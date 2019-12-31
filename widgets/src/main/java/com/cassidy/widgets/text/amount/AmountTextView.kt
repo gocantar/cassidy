@@ -37,7 +37,7 @@ class AmountTextView @JvmOverloads constructor(
     }
 
     override fun onLifecycleOwnerAttached(lifecycleOwner: LifecycleOwner) {
-        viewModel.amountLabel.observe(lifecycleOwner, Observer { amountLabel ->
+        viewModel.amount.observe(lifecycleOwner, Observer { amountLabel ->
             val (amount, symbol) = amountLabel
             text = styleDelegate.transform(amount, symbol, style)
         })

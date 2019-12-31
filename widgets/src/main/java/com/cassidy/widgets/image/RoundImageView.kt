@@ -53,7 +53,7 @@ open class RoundImageView @JvmOverloads constructor(
     private val bitmapBounds: RectF = RectF()
     private val strokeBounds: RectF = RectF()
 
-    private val tappedPaint: Paint
+    private val tapPain: Paint
     private val strokePaint: Paint
     private val bitmapPaint: Paint
 
@@ -62,7 +62,7 @@ open class RoundImageView @JvmOverloads constructor(
         attrs?.let { initializeAttributes(it, defStyleAttr) }
         bitmapPaint = configureBitmapPaint()
         strokePaint = configureStrokePaint()
-        tappedPaint = configureTappedPaint()
+        tapPain = configureTappedPaint()
         configureBitmap()
     }
 
@@ -101,9 +101,9 @@ open class RoundImageView @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        updateBitmapBounds()
-        updateBitmapSize()
+        updateViewBounds(bitmapBounds)
         updateStrokeBounds(bitmapBounds)
+        updateBitmapSize()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -124,7 +124,7 @@ open class RoundImageView @JvmOverloads constructor(
 
     protected fun drawHighlight(canvas: Canvas) {
         if (isHighLightEnable && isTapped) {
-            canvas.drawOval(bitmapBounds, tappedPaint)
+            canvas.drawOval(bitmapBounds, tapPain)
         }
     }
 
@@ -134,16 +134,16 @@ open class RoundImageView @JvmOverloads constructor(
         }
     }
 
-    protected fun drawBitmap(canvas: Canvas) {
+    private fun drawBitmap(canvas: Canvas) {
         canvas.drawOval(bitmapBounds, bitmapPaint)
     }
 
-    protected fun updateBitmapBounds() {
+    protected fun updateViewBounds(bounds: RectF) {
         val contentWidth = width - paddingLeft - paddingRight
         val contentHeight = height - paddingLeft - paddingRight
         val diameter = min(contentWidth, contentHeight)
         val (left, top) = getCircleBoundsOrigin(contentWidth, contentHeight)
-        bitmapBounds.set(left, top, left + diameter, top + diameter)
+        bounds.set(left, top, left + diameter, top + diameter)
     }
 
     private fun configureBitmap() {
@@ -243,6 +243,7 @@ open class RoundImageView @JvmOverloads constructor(
     }
 
     inner class RoundImageViewOutlineProvider(rect: RectF) : ViewOutlineProvider() {
+
         private val mRect: Rect = Rect(
             rect.left.toInt(),
             rect.top.toInt(),
