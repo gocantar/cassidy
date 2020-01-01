@@ -38,7 +38,7 @@ class AvatarImageViewModelTest : UnitTest {
 
     @Test
     @DisplayName("Given new avatar when style is not update should update with previous style")
-    fun givenNewAmount_thenUpdateLabel() {
+    fun givenNewAvatar_thenUpdateLabel() {
         warmUp()
         viewModel.avatar.observeForever(observer)
         viewModel.setAvatar(Avatar("First", "Second"))
@@ -48,7 +48,7 @@ class AvatarImageViewModelTest : UnitTest {
 
     @Test
     @DisplayName("When change avatar with new style should be update initials with style applied")
-    fun givenNewAmountAndCode_thenUpdateLabel() {
+    fun givenNewAvatarAndStyle_thenUpdateLabel() {
         warmUp()
         viewModel.avatar.observeForever(observer)
         viewModel.setAvatar(Avatar("First", "Second", Avatar.Style.ONE_INITIAL))

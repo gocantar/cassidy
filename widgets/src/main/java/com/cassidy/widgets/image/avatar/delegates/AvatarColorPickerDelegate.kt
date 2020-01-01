@@ -5,7 +5,7 @@ import kotlin.math.abs
 
 class AvatarColorPickerDelegate {
 
-    private val ARRAY_COLORS_SIZE = 18
+    private val ARRAY_COLORS_SIZE = 10
 
     fun pick(avatar: Avatar, behaviour: Avatar.Behaviour) = when (behaviour) {
         Avatar.Behaviour.FIXED -> FIXED
