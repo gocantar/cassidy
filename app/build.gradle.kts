@@ -10,6 +10,8 @@ android {
     compileSdkVersion(29)
     buildToolsVersion = Android.Versions.buildTools
 
+    androidExtensions.isExperimental = true
+
     defaultConfig {
         applicationId = "com.gocantar.cassidy.app"
         minSdkVersion(21)
@@ -46,6 +48,7 @@ dependencies {
     implementation(Android.Libraries.core)
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(project(":widgets"))
+    implementation(project(":tools"))
     implementation("com.google.android.material:material:1.2.0-alpha03")
 
 

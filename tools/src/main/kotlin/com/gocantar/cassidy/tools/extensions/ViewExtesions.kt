@@ -1,4 +1,4 @@
-package com.cassidy.widgets.extensions
+package com.gocantar.cassidy.tools.extensions
 
 import android.view.View
 import androidx.annotation.ArrayRes

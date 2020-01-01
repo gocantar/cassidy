@@ -43,7 +43,7 @@ dependencies {
     implementation(Android.Libraries.core)
     implementation(Android.Libraries.liveData)
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
-    implementation("com.gocantar.cassidy:tools:0.1.0")
+    compileOnly(project(":tools"))
 
     testImplementation(project(":test"))
 }

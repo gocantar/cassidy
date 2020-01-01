@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cassidy</string>
+    <string name="label_examples_app">Example Apps</string>
 </resources>

@@ -9,8 +9,8 @@ import android.util.AttributeSet
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.cassidy.widgets.R
-import com.cassidy.widgets.extensions.color
-import com.cassidy.widgets.extensions.dimension
+import com.gocantar.cassidy.tools.extensions.color
+import com.gocantar.cassidy.tools.extensions.dimension
 import com.cassidy.widgets.image.CustomRoundImageView
 import com.cassidy.widgets.image.avatar.delegates.AvatarColorPickerDelegate
 import com.cassidy.widgets.image.avatar.models.Avatar
@@ -93,7 +93,7 @@ class AvatarImageView @JvmOverloads constructor(
         super.onDraw(canvas)
     }
 
-    fun setAvatar(avatar: Avatar) {
+    fun setLabel(avatar: Avatar) {
         viewModel.setAvatar(avatar)
     }
 

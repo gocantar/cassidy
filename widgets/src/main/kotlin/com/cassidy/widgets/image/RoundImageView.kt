@@ -21,7 +21,7 @@ import android.view.ViewOutlineProvider
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import com.cassidy.widgets.R
-import com.cassidy.widgets.extensions.color
+import com.gocantar.cassidy.tools.extensions.color
 import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.sqrt
