@@ -2,7 +2,6 @@ package com.cassidy.widgets.image.avatar
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
@@ -25,7 +24,9 @@ class AvatarImageView @JvmOverloads constructor(
 
     private val viewModel = AvatarImageViewModel()
 
-    private var text: String? = null
+    private var text: String? = ""
+
+    private var masking: Boolean = false
 
     private var textColor: Int = color(R.color.white)
     private var backgroundAvatarColor: Int = color(R.color.grey)
@@ -58,6 +59,7 @@ class AvatarImageView @JvmOverloads constructor(
             val backgroundType = getInt(R.styleable.AvatarImageView_backgroundBehaviour, 0)
             textFontSize = getDimension(R.styleable.AvatarImageView_textSize, textFontSize)
             textColor = getColor(R.styleable.AvatarImageView_textColor, textColor)
+            masking = getBoolean(R.styleable.AvatarImageView_mask, masking)
             backgroundAvatarColor =
                 getColor(R.styleable.AvatarImageView_backgroundAvatarColor, backgroundAvatarColor)
             viewModel.configure(avatarStyle, backgroundType)
@@ -82,6 +84,7 @@ class AvatarImageView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         text?.run {
             drawBackground(canvas)
+            drawMask(canvas)
             drawText(canvas)
             drawHighlight(canvas)
             drawStroke(canvas)
@@ -99,7 +102,9 @@ class AvatarImageView @JvmOverloads constructor(
     }
 
     private fun drawMask(canvas: Canvas) {
-        canvas.drawOval(backgroundBounds, backgroundPaint)
+        runIf(masking) {
+            canvas.drawArc(backgroundBounds, 315F, 180F, false, maskPaint)
+        }
     }
 
     private fun drawText(canvas: Canvas) {
@@ -142,7 +147,7 @@ class AvatarImageView @JvmOverloads constructor(
     private fun configureMaskPaint(): Paint {
         return Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
-            color = Color.RED
+            color = color(R.color.mask)
         }
     }
 }
