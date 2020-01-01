@@ -7,8 +7,7 @@ internal class AvatarFormatter {
 
     private val EMPTY_STRING = ""
 
-    internal fun format(avatar: Avatar) = when (avatar.style ?: Avatar.Style.NONE) {
-        Avatar.Style.NONE -> EMPTY_STRING
+    internal fun format(avatar: Avatar) = when (avatar.style ?: Avatar.Style.ONE_INITIAL) {
         Avatar.Style.ONE_INITIAL -> avatar.oneInitialFormat()
         Avatar.Style.TWO_INITIALS -> avatar.twoInitialsFormat()
         Avatar.Style.IMAGE -> null

@@ -30,7 +30,6 @@ class AvatarFormatterTest : UnitTest {
         fun parameterizedArguments(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(Avatar("First", "Second", Avatar.Style.IMAGE), null),
-                Arguments.of(Avatar("First", "Second", Avatar.Style.NONE), ""),
                 Arguments.of(Avatar("First", "Second", Avatar.Style.ONE_INITIAL), "F"),
                 Arguments.of(Avatar("First", null, Avatar.Style.ONE_INITIAL), "F"),
                 Arguments.of(Avatar(null, "Second", Avatar.Style.ONE_INITIAL), ""),

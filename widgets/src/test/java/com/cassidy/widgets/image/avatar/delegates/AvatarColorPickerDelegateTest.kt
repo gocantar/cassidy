@@ -21,14 +21,6 @@ class AvatarColorPickerDelegateTest : UnitTest {
     }
 
     @Test
-    @DisplayName("Given rainbow behaviour when style it's none should return [-1]")
-    fun givenRainbowBehaviour_whenStyleItsNone_shouldReturnANumberLessThan0() {
-        val avatar = Avatar("first", "second", Avatar.Style.NONE)
-        val color = delegate.pick(avatar, Avatar.Behaviour.RAINBOW)
-        color equal -1
-    }
-
-    @Test
     @DisplayName("Given rainbow behaviour when style it's image should return [-1]")
     fun givenRainbowBehaviour_whenStyleItsImage_shouldReturnANumberLessThan0() {
         val avatar = Avatar("first", "second", Avatar.Style.IMAGE)

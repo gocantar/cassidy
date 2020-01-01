@@ -2,6 +2,7 @@ package com.cassidy.widgets.image.avatar
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
@@ -24,7 +25,7 @@ class AvatarImageView @JvmOverloads constructor(
 
     private val viewModel = AvatarImageViewModel()
 
-    private var text: String? = ""
+    private var text: String? = null
 
     private var textColor: Int = color(R.color.white)
     private var backgroundAvatarColor: Int = color(R.color.grey)
@@ -33,15 +34,18 @@ class AvatarImageView @JvmOverloads constructor(
 
     private val textPaint: Paint
     private val backgroundPaint: Paint
+    private val maskPaint: Paint
 
     private val backgroundBounds: RectF = RectF()
+    private val maskBounds: RectF = RectF()
 
     private val textBounds: Rect = Rect()
 
     init {
         attrs?.let { initializeAttributes(it, defStyleAttr) }
-        textPaint = configureTextPaint()
         backgroundPaint = configureBackgroundPaint()
+        maskPaint = configureMaskPaint()
+        textPaint = configureTextPaint()
         updateTextBounds()
     }
 
@@ -72,6 +76,7 @@ class AvatarImageView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         updateViewBounds(backgroundBounds)
+        updateViewBounds(maskBounds)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -93,6 +98,10 @@ class AvatarImageView @JvmOverloads constructor(
         canvas.drawOval(backgroundBounds, backgroundPaint)
     }
 
+    private fun drawMask(canvas: Canvas) {
+        canvas.drawOval(backgroundBounds, backgroundPaint)
+    }
+
     private fun drawText(canvas: Canvas) {
         val textBottom = backgroundBounds.centerY() - textBounds.exactCenterY()
         canvas.drawText(text!!, backgroundBounds.centerX(), textBottom, textPaint)
@@ -111,7 +120,8 @@ class AvatarImageView @JvmOverloads constructor(
     }
 
     private fun updateTextBounds() {
-        textPaint.getTextBounds(text, 0, text?.length ?: 0, textBounds)
+        val initials = text ?: return
+        textPaint.getTextBounds(initials, 0, initials.length, textBounds)
     }
 
     private fun configureTextPaint(): Paint {
@@ -126,6 +136,13 @@ class AvatarImageView @JvmOverloads constructor(
         return Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
             color = backgroundAvatarColor
+        }
+    }
+
+    private fun configureMaskPaint(): Paint {
+        return Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            style = Paint.Style.FILL
+            color = Color.RED
         }
     }
 }

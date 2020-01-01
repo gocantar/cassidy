@@ -27,9 +27,9 @@ class AvatarImageViewModelTest : UnitTest {
 
     @Test
     @DisplayName("Given initial configuration should be update label")
-    fun givenInitialConfiguration_thenUpdateLabelWithNullAmount() {
+    fun givenInitialConfiguration_thenUpdateLabelWithEmptyString() {
         every { colorPicker.pick(any(), Avatar.Behaviour.FIXED) } returns -1
-        every { formatter.format(Avatar("", "", Avatar.Style.NONE)) } returns ""
+        every { formatter.format(Avatar("", "", Avatar.Style.ONE_INITIAL)) } returns ""
         viewModel.avatar.observeForever(observer)
         viewModel.configure(0, 0)
         verify { observer.onChanged(Pair("", -1)) }
@@ -58,18 +58,11 @@ class AvatarImageViewModelTest : UnitTest {
 
     private fun warmUp() {
         every { colorPicker.pick(any(), Avatar.Behaviour.FIXED) } returns -1
-        every { formatter.format(Avatar("First", "Second", Avatar.Style.ONE_INITIAL)) } returns "F"
-        every {
-            formatter.format(
-                Avatar(
-                    "First",
-                    "Second",
-                    Avatar.Style.TWO_INITIALS
-                )
-            )
-        } returns "FS"
+        every { formatter.format(Avatar("", "", Avatar.Style.ONE_INITIAL)) } returns ""
         every { formatter.format(Avatar("", "", Avatar.Style.TWO_INITIALS)) } returns ""
+        every { formatter.format(Avatar("First", "Second", Avatar.Style.ONE_INITIAL)) } returns "F"
+        every { formatter.format(Avatar("First", "Second", Avatar.Style.TWO_INITIALS)) } returns "FS"
         excludeRecords { observer.onChanged(Pair("", -1)) }
-        viewModel.configure(2, 0)
+        viewModel.configure(1, 0)
     }
 }

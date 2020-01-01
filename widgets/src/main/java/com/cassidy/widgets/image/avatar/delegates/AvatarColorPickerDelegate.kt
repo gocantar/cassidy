@@ -12,8 +12,8 @@ class AvatarColorPickerDelegate {
         Avatar.Behaviour.RAINBOW -> pickColor(avatar)
     }
 
-    private fun pickColor(avatar: Avatar) = when (avatar.style ?: Avatar.Style.NONE) {
-        Avatar.Style.IMAGE, Avatar.Style.NONE -> FIXED
+    private fun pickColor(avatar: Avatar) = when (avatar.style ?: Avatar.Style.ONE_INITIAL) {
+        Avatar.Style.IMAGE-> FIXED
         Avatar.Style.ONE_INITIAL, Avatar.Style.TWO_INITIALS -> avatar.hash() % ARRAY_COLORS_SIZE
     }
 

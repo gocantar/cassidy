@@ -17,7 +17,7 @@ internal class AvatarImageViewModel(
 
     private var backgroundBehaviour: Avatar.Behaviour = Avatar.Behaviour.FIXED
 
-    private val style: Avatar.Style get() = state.value?.style ?: Avatar.Style.NONE
+    private val style: Avatar.Style get() = state.value?.style ?: Avatar.Style.ONE_INITIAL
 
     internal fun configure(avatarStyle: Int, behaviour: Int) {
         backgroundBehaviour = Avatar.Behaviour.values()[behaviour]
@@ -34,8 +34,7 @@ internal class AvatarImageViewModel(
         return Pair(initials, color)
     }
 
-    private fun format(avatar: Avatar) = when (avatar.style ?: Avatar.Style.NONE) {
-        Avatar.Style.NONE,
+    private fun format(avatar: Avatar) = when (avatar.style ?: Avatar.Style.ONE_INITIAL) {
         Avatar.Style.ONE_INITIAL,
         Avatar.Style.TWO_INITIALS -> formatter.format(avatar)
         else -> null
