@@ -24,29 +24,29 @@ class AvatarImageView @JvmOverloads constructor(
 
     private val viewModel = AvatarImageViewModel()
 
-    private var text: String? = ""
+    private var label: String? = ""
 
     private var masking: Boolean = false
 
     private var textColor: Int = color(R.color.white)
     private var backgroundAvatarColor: Int = color(R.color.grey)
 
-    private var textFontSize: Float = dimension(R.dimen.default_avatar_text_size)
+    private var labelFontSize: Float = dimension(R.dimen.default_avatar_text_size)
 
-    private val textPaint: Paint
+    private val labelPaint: Paint
     private val backgroundPaint: Paint
     private val maskPaint: Paint
 
     private val backgroundBounds: RectF = RectF()
     private val maskBounds: RectF = RectF()
 
-    private val textBounds: Rect = Rect()
+    private val labelBounds: Rect = Rect()
 
     init {
         attrs?.let { initializeAttributes(it, defStyleAttr) }
         backgroundPaint = configureBackgroundPaint()
         maskPaint = configureMaskPaint()
-        textPaint = configureTextPaint()
+        labelPaint = configureTextPaint()
         updateTextBounds()
     }
 
@@ -57,8 +57,8 @@ class AvatarImageView @JvmOverloads constructor(
         with(styles) {
             val avatarStyle = getInt(R.styleable.AvatarImageView_avatarStyle, 0)
             val backgroundType = getInt(R.styleable.AvatarImageView_backgroundBehaviour, 0)
-            textFontSize = getDimension(R.styleable.AvatarImageView_textSize, textFontSize)
-            textColor = getColor(R.styleable.AvatarImageView_textColor, textColor)
+            labelFontSize = getDimension(R.styleable.AvatarImageView_labelSize, labelFontSize)
+            textColor = getColor(R.styleable.AvatarImageView_labelColor, textColor)
             masking = getBoolean(R.styleable.AvatarImageView_mask, masking)
             backgroundAvatarColor =
                 getColor(R.styleable.AvatarImageView_backgroundAvatarColor, backgroundAvatarColor)
@@ -82,7 +82,7 @@ class AvatarImageView @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas) {
-        text?.run {
+        label?.run {
             drawBackground(canvas)
             drawMask(canvas)
             drawText(canvas)
@@ -108,8 +108,8 @@ class AvatarImageView @JvmOverloads constructor(
     }
 
     private fun drawText(canvas: Canvas) {
-        val textBottom = backgroundBounds.centerY() - textBounds.exactCenterY()
-        canvas.drawText(text!!, backgroundBounds.centerX(), textBottom, textPaint)
+        val textBottom = backgroundBounds.centerY() - labelBounds.exactCenterY()
+        canvas.drawText(label!!, backgroundBounds.centerX(), textBottom, labelPaint)
     }
 
     private fun updateBackground(color: Int) {
@@ -120,19 +120,19 @@ class AvatarImageView @JvmOverloads constructor(
     }
 
     private fun updateText(value: String?) {
-        text = value
+        label = value
         updateTextBounds()
     }
 
     private fun updateTextBounds() {
-        val initials = text ?: return
-        textPaint.getTextBounds(initials, 0, initials.length, textBounds)
+        val initials = label ?: return
+        labelPaint.getTextBounds(initials, 0, initials.length, labelBounds)
     }
 
     private fun configureTextPaint(): Paint {
         return Paint(Paint.ANTI_ALIAS_FLAG).apply {
             textAlign = Paint.Align.CENTER
-            textSize = textFontSize
+            textSize = labelFontSize
             color = textColor
         }
     }

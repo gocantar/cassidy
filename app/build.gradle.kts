@@ -46,6 +46,8 @@ dependencies {
     implementation(Android.Libraries.core)
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(project(":widgets"))
+    implementation("com.google.android.material:material:1.2.0-alpha03")
+
 
     testImplementation(kotlin(Kotlin.Modules.test))
 
