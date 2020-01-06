@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import java.util.*
+import java.util.Locale
 
 object Router {
     fun navigateTo(id: String, context: Context) {

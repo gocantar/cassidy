@@ -13,7 +13,7 @@ class AvatarColorPickerDelegate {
     }
 
     private fun pickColor(avatar: Avatar) = when (avatar.style ?: Avatar.Style.ONE_INITIAL) {
-        Avatar.Style.IMAGE-> FIXED
+        Avatar.Style.IMAGE -> FIXED
         Avatar.Style.ONE_INITIAL, Avatar.Style.TWO_INITIALS -> avatar.hash() % ARRAY_COLORS_SIZE
     }
 

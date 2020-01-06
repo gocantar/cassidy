@@ -9,7 +9,7 @@ import com.gocantar.cassidy.tools.extensions.inflate
 class ItemsAdapter(
     private val items: List<String>,
     private val listener: (String) -> Unit
-): RecyclerView.Adapter<ItemViewHolder>() {
+) : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(parent.inflate(R.layout.item_view_holder))
