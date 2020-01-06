@@ -10,8 +10,9 @@ class ItemViewHolder(
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-    fun bind(title: String) {
+    fun bind(title: String, listener: (String) -> Unit) {
         avatar.setLabel(Avatar(title))
         label.text = title
+        containerView.setOnClickListener { listener(title) }
     }
 }
