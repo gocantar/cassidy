@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="avatar_color_00">#7f8c8d</color>
-    <color name="avatar_color_01">#2c3e50</color>
-    <color name="avatar_color_02">#2980b9</color>
-    <color name="avatar_color_03">#16a085</color>
-    <color name="avatar_color_04">#27ae60</color>
-    <color name="avatar_color_05">#f1c40f</color>
-    <color name="avatar_color_06">#e67e22</color>
-    <color name="avatar_color_07">#e74c3c</color>
-    <color name="avatar_color_08">#c0392b</color>
-    <color name="avatar_color_09">#8e44ad</color>
-
+    <color name="cassidy_color_avatar_00">#7f8c8d</color>
+    <color name="cassidy_color_avatar_01">#2c3e50</color>
+    <color name="cassidy_color_avatar_02">#2980b9</color>
+    <color name="cassidy_color_avatar_03">#16a085</color>
+    <color name="cassidy_color_avatar_04">#27ae60</color>
+    <color name="cassidy_color_avatar_05">#f1c40f</color>
+    <color name="cassidy_color_avatar_06">#e67e22</color>
+    <color name="cassidy_color_avatar_07">#e74c3c</color>
+    <color name="cassidy_color_avatar_08">#c0392b</color>
+    <color name="cassidy_color_avatar_09">#8e44ad</color>
     <array name="avatar_colors">
-        <item>@color/avatar_color_00</item>
-        <item>@color/avatar_color_01</item>
-        <item>@color/avatar_color_02</item>
-        <item>@color/avatar_color_03</item>
-        <item>@color/avatar_color_04</item>
-        <item>@color/avatar_color_05</item>
-        <item>@color/avatar_color_06</item>
-        <item>@color/avatar_color_07</item>
-        <item>@color/avatar_color_08</item>
-        <item>@color/avatar_color_09</item>
+        <item>@color/cassidy_color_avatar_00</item>
+        <item>@color/cassidy_color_avatar_01</item>
+        <item>@color/cassidy_color_avatar_02</item>
+        <item>@color/cassidy_color_avatar_03</item>
+        <item>@color/cassidy_color_avatar_04</item>
+        <item>@color/cassidy_color_avatar_05</item>
+        <item>@color/cassidy_color_avatar_06</item>
+        <item>@color/cassidy_color_avatar_07</item>
+        <item>@color/cassidy_color_avatar_08</item>
+        <item>@color/cassidy_color_avatar_09</item>
     </array>
 </resources>
