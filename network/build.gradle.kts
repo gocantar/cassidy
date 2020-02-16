@@ -38,6 +38,11 @@ android {
     kotlinOptions.apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    compileOptions.apply {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {

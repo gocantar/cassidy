@@ -1,6 +1,6 @@
 object AndroidArtifact {
 
-    const val version = "0.1.0"
+    const val version = "0.1.1"
     const val versionDescription = "Pre-release"
     const val groupId = "com.gocantar.cassidy"
 

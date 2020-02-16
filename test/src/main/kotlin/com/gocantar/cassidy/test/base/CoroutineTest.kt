@@ -12,12 +12,12 @@ import org.junit.jupiter.api.extension.ExtendWith
 open class CoroutineTest : UnitTest {
 
     @get:ExtendWith
-    protected val coroutinesTestRule = CoroutinesTestExtension()
+    protected val coroutineTestRule = CoroutinesTestExtension()
 
     protected val dispatcher: TestCoroutineDispatcher
-        get() = coroutinesTestRule.dispatcher
+        get() = coroutineTestRule.dispatcher
 
     fun executeBlockingTest(block: suspend TestCoroutineScope.() -> Unit) {
-        return runBlockingTest(coroutinesTestRule.dispatcher, block)
+        return runBlockingTest(dispatcher, block)
     }
 }

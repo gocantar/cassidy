@@ -34,12 +34,18 @@ android {
     kotlinOptions.apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    compileOptions.apply {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(Android.Libraries.core)
+    implementation(Android.Libraries.lifecycle)
     implementation(kotlin(Kotlin.Modules.standard, KotlinCompilerVersion.VERSION))
     implementation(Kotlin.Libraries.coroutinesAndroid)
     implementation(Kotlin.Libraries.coroutinesCore)

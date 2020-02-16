@@ -226,7 +226,7 @@ open class RoundImageView @JvmOverloads constructor(
         if (isInCircle().not()) return false
         isTapped = true
         invalidate()
-        return true
+        return isClickable
     }
 
     private fun MotionEvent.handleUp(): Boolean {

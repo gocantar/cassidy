@@ -1,5 +1,6 @@
 package com.gocantar.cassidy.example.holders
 
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cassidy.widgets.image.avatar.models.Avatar

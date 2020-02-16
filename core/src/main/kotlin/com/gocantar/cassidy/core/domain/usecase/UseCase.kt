@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
@@ -13,19 +14,22 @@ import kotlinx.coroutines.withContext
  */
 
 abstract class UseCase<Params, Result>(
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val scope: CoroutineScope = CoroutineScope(dispatcher)
-) : Interactor<Params, Result> {
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) {
 
-    override suspend fun executeAsync(params: Params?, delay: Long): Deferred<Result> {
-        return scope.async { runTask(params, delay) }
+    /**
+     * Execute use case with provided delay
+     * @params Use case params. If no params are provided his value is null.
+     * @delay Delay before execute the use case. If no delay is provided default delay is 0.
+     * @return Use case result as Deferred. Call result.await() to get the result value.
+     */
+    suspend operator fun invoke(params: Params? = null, delay: Long = 0L): Result {
+        return withContext(dispatcher) {
+            runTask(params, delay)
+        }
     }
 
-    override suspend fun execute(params: Params?, delay: Long): Result {
-        return withContext(dispatcher) { runTask(params, delay) }
-    }
-
-    internal abstract fun backgroundTask(params: Params?): Result
+    abstract fun backgroundTask(params: Params?): Result
 
     private suspend fun runTask(params: Params?, delay: Long): Result {
         delay(delay)

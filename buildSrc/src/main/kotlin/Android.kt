@@ -7,7 +7,7 @@ object Android {
         const val constraintLayout = "2.0.0-beta4"
         const val espressoCore = "3.2.0"
         const val gradleTools = "3.5.3"
-        const val liveData = "2.2.0-alpha03"
+        const val lifecycle = "2.2.0-rc03"
         const val testRunner = "1.2.0"
     }
 
@@ -17,7 +17,9 @@ object Android {
         const val core = "androidx.core:core-ktx:${Versions.androidX}"
         const val coreTesting = "androidx.arch.core:core-testing:${Versions.archCore}"
         const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
-        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
+        const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val testRunner = "androidx.test:runner:${Versions.testRunner}"
     }
 
